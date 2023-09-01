@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <title>{{ content.title }}</title>
+    <title>Nylex.net - {% block title %}{% endblock %}</title>
 <body>
-
-<p>{{ content.content }}</p>
-  
-
+    {% block content %}{% endblock %}
 </body>
 </html>

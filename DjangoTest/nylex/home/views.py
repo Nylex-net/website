@@ -8,4 +8,8 @@ def home(request):
     context = {
         'content': content
     }
-    return HttpResponse(loader.get_template('index.html').render(context, request))
+    return HttpResponse(loader.get_template('home.html').render(context, request))
+
+def main(request):
+    template = loader.get_template('home.html')
+    return HttpResponse(template.render())
