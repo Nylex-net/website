@@ -6,10 +6,7 @@ from .models import BlogPost
 def home(request):
     content = BlogPost.objects.all()[0]
     context = {
-        'content': content
+        'content': content,
+        'root': True
     }
     return HttpResponse(loader.get_template('home.html').render(context, request))
-
-def main(request):
-    template = loader.get_template('home.html')
-    return HttpResponse(template.render())
