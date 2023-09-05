@@ -4,32 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Nylex.net - {% block title %}{% endblock %}</title>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="{% static 'media/TransLex.png' %}"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="/"><img src="{% static 'media/TransLex.png' %}"></a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link active" href="">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" href="#">Page 1-1</a></li>
+                <li><a class="dropdown-item" href="#">Page 1-2</a></li>
+                <li><a class="dropdown-item" href="#">Page 1-3</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-      </nav>
+      </div>
+    </nav>
       {% if root == True %}
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -75,7 +85,7 @@
     <p>
       {% block content %}{% endblock %}
     </p>
-    <footer class="py-5">
+    <footer class="py-5" style="background-color: #68bb06;">
       <div class="container">
         <div class="row">
           <div class="col-6 col-md-2 mb-3">
@@ -122,21 +132,20 @@
             </form>
           </div>
         </div>
-      </div>
-      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p>© <span id="year"></span> Nylex.net. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-3">
-            <a class="link-dark" href="#">
-              <svg class="bi" width="24" height="24">
-                <use href="#instagram"></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+          <p>© <span id="year"></span> Nylex.net. All rights reserved.</p>
+          <!-- <ul class="list-unstyled d-flex">
+            <li class="ms-3">
+              <a class="link-dark" href="#">
+                <svg class="bi" width="24" height="24">
+                  <use href="#twitter"></use>
+                </svg>
+              </a>
+            </li>
+          </ul> -->
+        </div>
       </div>
     </footer>
-    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById("year").innerHTML = new Date().getFullYear();
