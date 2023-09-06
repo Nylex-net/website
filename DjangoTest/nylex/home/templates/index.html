@@ -17,21 +17,21 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="{% static 'media/TransLex.png' %}"></a>
+        <a class="navbar-brand" href="/"><img src="{% static 'media/TransLex.png' %}"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="">Contact</a>
+              <a class="nav-link active" href="#">Contact</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 About
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="#">About Nylex</a></li>
+                <li><a class="dropdown-item" href="about">About Nylex</a></li>
                 <li><a class="dropdown-item" href="#">Contact</a></li>
                 <li><a class="dropdown-item" href="#">Projects</a></li>
                 <li><a class="dropdown-item" href="#">Careers</a></li>
@@ -63,19 +63,18 @@
     </nav>
        <!-- main banner -->
     <section>
+      {% block banned %}{% endblock %}
       {% block banner %}{% endblock %}
   </section>
-    <p>
-      {% block content %}{% endblock %}
-    </p>
+  <main><p>{% block content %}{% endblock %}</p></main>
     <footer class="py-5" style="background-color: #68bb06;">
       <div class="container">
         <div class="row">
           <div class="col-6 col-md-2 mb-3">
             <h5>Nylex.net</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-              <li class="nav-item mb-2">About</li>
+              <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Home</a></li>
+              <li class="nav-item mb-2"><a href="about" class="nav-link p-0 text-muted">About</a></li>
               <li class="nav-item mb-2">Contact</li>
               <li class="nav-item mb-2">Help Desk</li>
               <li class="nav-item mb-2">Projects</li>
@@ -134,5 +133,6 @@
         document.getElementById("year").innerHTML = new Date().getFullYear();
       });
     </script>
+    {% block extraStyle %}{% endblock %}
 </body>
 </html>

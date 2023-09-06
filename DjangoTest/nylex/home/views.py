@@ -11,9 +11,15 @@ def home(request):
     }
     return HttpResponse(loader.get_template('home.html').render(context, request))
 
-def about(request):
-    content = Page.objects.all()[1]
-    context = {
-        'content': content
-    }
-    return HttpResponse(loader.get_template('template.html').render(context, request))
+def template(request, slug):
+    content = Page.objects.filter(title=slug)
+    if len(content) <= 0:
+        print("0 results from " + slug)
+        home(request)
+        return
+    else:
+        content = content.all().values()[0]
+        context = {
+            'content': content
+        }
+        return HttpResponse(loader.get_template('template.html').render(context, request))

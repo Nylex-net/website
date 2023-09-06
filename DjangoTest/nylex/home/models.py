@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class Page(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.SlugField(max_length=200, unique=True)
     header = models.CharField(max_length=200)
     banner = models.ImageField()
     content = models.TextField()
