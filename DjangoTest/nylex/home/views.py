@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from django.template import loader
 from .models import Page
@@ -6,15 +7,13 @@ from .models import Page
 def home(request):
     content = Page.objects.all()[0]
     context = {
-        'content': content,
-        'root': True
+        'content': content
     }
     return HttpResponse(loader.get_template('home.html').render(context, request))
 
-def page(request, page_id):
-    content = Page.objects.get(pk=page_id)
+def about(request):
+    content = Page.objects.all()[1]
     context = {
-        'content': content,
-        'root': False
+        'content': content
     }
     return HttpResponse(loader.get_template('template.html').render(context, request))

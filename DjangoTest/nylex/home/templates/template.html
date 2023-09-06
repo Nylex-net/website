@@ -4,10 +4,22 @@
   {{ content.title }}
 {% endblock %}
 
-{% block header %}
-  {{ content.header }}
+{% block banner %}
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text">
+      <h2 class="hero_title">{% block header %}{{ content.header }}{% endblock %}</h2>
+  </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
  {{ content.content }}
+{% endblock %}
+
+{% block extraStyle %}
+ <style>
+  
+ </style>
 {% endblock %}
