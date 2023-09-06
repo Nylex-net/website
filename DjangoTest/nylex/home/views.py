@@ -16,7 +16,7 @@ def template(request, slug):
     if len(content) <= 0:
         print("0 results from " + slug)
         home(request)
-        return
+        return HttpResponse(loader.get_template('404.html').render(None, request))
     else:
         content = content.all().values()[0]
         context = {

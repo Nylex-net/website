@@ -61,12 +61,13 @@
         </div>
       </div>
     </nav>
-       <!-- main banner -->
-    <section>
+      <!-- main banner -->
       {% block banned %}{% endblock %}
-      {% block banner %}{% endblock %}
-  </section>
-  <main><p>{% block content %}{% endblock %}</p></main>
+  <main>
+    <div class="container-fluid p-5">
+      <p>{% block content %}{% endblock %}</p>
+    </div>
+  </main>
     <footer class="py-5" style="background-color: #68bb06;">
       <div class="container">
         <div class="row">
