@@ -128,3 +128,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = join(BASE_DIR, 'staticfiles') # os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = join(BASE_DIR, 'home/static')
+
+# Expire sessions after a specific time (e.g., 30 minutes)
+SESSION_COOKIE_AGE = 1800  # 30 minutes in seconds
+
+# Expire sessions after each request (optional)
+SESSION_SAVE_EVERY_REQUEST = True
