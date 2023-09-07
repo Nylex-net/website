@@ -126,3 +126,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Define the directory where static files will be collected.
 STATIC_ROOT = join(BASE_DIR, 'staticfiles') # os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = join(BASE_DIR, 'home/static')

@@ -4,9 +4,10 @@ from django.utils.text import slugify
 
 # Create your models here.
 class Page(models.Model):
-    title = models.SlugField(max_length=200, unique=True)
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     header = models.CharField(max_length=200)
-    banner = models.ImageField()
+    banner = models.ImageField(upload_to='media')
     content = models.TextField()
     pub_date = models.DateTimeField('date published')
 
@@ -15,6 +16,5 @@ class Page(models.Model):
     #     return reverse("article", kwargs={"pk": self.id, "slug": self.slug})
     
     # def save(self, *args, **kwargs):
-    #     value = self.title
-    #     self.slug = slugify(value, allow_unicode=True)
+    #     self.slug = slugify(self.title)
     #     super().save(*args, **kwargs)

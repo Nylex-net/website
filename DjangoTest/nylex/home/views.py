@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
 from .models import Page
 
@@ -12,11 +12,11 @@ def home(request):
     return HttpResponse(loader.get_template('home.html').render(context, request))
 
 def template(request, slug):
-    content = Page.objects.filter(title=slug)
+    content = Page.objects.filter(slug=slug)
     if len(content) <= 0:
         print("0 results from " + slug)
-        home(request)
-        return HttpResponse(loader.get_template('404.html').render(None, request))
+        # home(request)
+        return HttpResponseNotFound(loader.get_template('404.html').render(None, request))
     else:
         content = content.all().values()[0]
         context = {
