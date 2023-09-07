@@ -5,11 +5,17 @@ from django.template import loader
 from .models import Page
 
 def home(request):
-    content = Page.objects.all()[0]
-    context = {
-        'content': content
-    }
-    return HttpResponse(loader.get_template('home.html').render(context, request))
+    content = Page.objects.filter(slug='home')
+    if len(content) <= 0:
+        print("No home menu")
+        # home(request)
+        return HttpResponseNotFound(loader.get_template('404.html').render(None, request))
+    else:
+        content = content.all().values()[0]
+        context = {
+            'content': content
+        }
+        return HttpResponse(loader.get_template('home.html').render(context, request))
 
 def template(request, slug):
     content = Page.objects.filter(slug=slug)
