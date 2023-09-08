@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-cd!ao#kn^6!1(*nb_rxdnl*8q6#41s=r3qm5(8gu%)%gb%xo#1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', '172.26.32.1', 'WS-Henry']
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,12 @@ SESSION_COOKIE_AGE = 1800  # 30 minutes in seconds
 
 # Expire sessions after each request (optional)
 SESSION_SAVE_EVERY_REQUEST = True
+
+# CKEDITOR_BASEPATH = join(STATIC_ROOT, "/ckeditor/ckeditor/")
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+    },
+}
