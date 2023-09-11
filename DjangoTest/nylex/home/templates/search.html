@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}Search for '{{query}}'{% endblock title %}
+
+{% block content %}
+
+{% if query %}
+<div class="container text-center my-5">
+    <div class="row">
+        {% if posts %}
+        <h1 class="text-center">{{posts|length}} result(s) for "{{query}}"</h1>
+        {% for post in posts %}
+            <div class="col-md-4 my-3">
+                <div class="card" >
+                    <div class="card-body">
+                    <h5 class="card-title"><a href="{{post.slug}}" class="text-decoration-none text-dark">{{post.title}}</a></h5>
+                    {% if post.content|length > 100 %}
+                        <p>{{post.content|slice:"0:100"|safe}} ...</p>
+                    {% else %}
+                        <p>{{post.content|safe}}</p>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <h3 class="text-center">No results for "{{query}}"</h3>
+        {% endif %}
+    </div>
+</div>
+
+{% else %}
+<h1 class="text-center my-5">Please enter a search query</h1>
+{% endif %}
+{% endblock content %}

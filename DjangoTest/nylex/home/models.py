@@ -12,6 +12,8 @@ class Page(models.Model):
     content = RichTextField()
     pub_date = models.DateTimeField('date published')
 
+def __str__(self):
+        return self.title
     # def get_absolute_url(self, *args, **kwargs):
     #     slug = slugify(self.alias)
     #     return reverse("article", kwargs={"pk": self.id, "slug": self.slug})

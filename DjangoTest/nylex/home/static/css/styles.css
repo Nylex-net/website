@@ -15,8 +15,12 @@
     background-color: white;
 }
 
+/* ul.navbar-nav {
+    text-align: center;
+} */
+
 .nav-link {
-    font-weight: 1000;
+    font-weight: 600;
 }
 
 .transparentNav {
