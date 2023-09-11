@@ -14,3 +14,19 @@
 .navbarScroll.navbarLight {
     background-color: white;
 }
+
+.nav-link {
+    font-weight: 1000;
+}
+
+.transparentNav {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Reduce the height of the carousel */
+#carouselHero .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 80vh;
+    overflow: hidden;
+  }
