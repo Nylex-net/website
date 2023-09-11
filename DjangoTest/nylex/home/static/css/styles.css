@@ -1,0 +1,16 @@
+/* hero background image */
+.bgimage, source {
+    height:100vh;
+    background-size:cover;
+    position:relative;
+    width: 100%;
+    object-fit: fill;
+}
+
+.navbarScroll.navbarDark {
+    background-color: black;
+}
+
+.navbarScroll.navbarLight {
+    background-color: white;
+}
