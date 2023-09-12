@@ -22,7 +22,7 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg transparentNav"> <!-- navbar-light bg-light-->
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="{% static 'media/TransLex.png' %}"></a>
+        <a class="navbar-brand" href="/"><img src="{% static 'media/TransLex.png' %}" alt="Nylex.net Logo."></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,10 +53,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="help-desk">Help Desk</a>
+              <a class="nav-link" href="contact">Support & Contact</a>
             </li>
           </ul>
           <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
@@ -90,8 +87,7 @@
             <ul class="nav flex-column">
               <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Home</a></li>
               <li class="nav-item mb-2"><a href="about" class="nav-link p-0 text-muted">About</a></li>
-              <li class="nav-item mb-2"><a href="contact" class="nav-link p-0 text-muted">Contact</a></li>
-              <li class="nav-item mb-2"><a href="help-desk" class="nav-link p-0 text-muted">Help Desk</a></li>
+              <li class="nav-item mb-2"><a href="contact" class="nav-link p-0 text-muted">Support & Contact</a></li>
               <li class="nav-item mb-2"><a href="projects" class="nav-link p-0 text-muted">Projects</a></li>
               <li class="nav-item mb-2"><a href="terms-of-use" class="nav-link p-0 text-muted">Terms of Use</a></li>
               <li class="nav-item mb-2"><a href="privacy-policy" class="nav-link p-0 text-muted">Privacy Policy</a></li>

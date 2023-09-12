@@ -8,6 +8,32 @@
   {{ content.description }}
 {% endblock %}
 
+{% block extraStyle %}
+ <style>
+  /* text css above hero image*/
+  .hero_title {
+      font-size: 4.5rem;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+  }
+  .hero_desc {
+      font-size: 2rem;
+  }
+  .hero-text {
+      text-align:center;
+      position: absolute;
+      /* top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
+      color: white;
+  }
+  .CarouselParagraph {
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+  }
+ </style>
+{% endblock %}
+
 {% block banned %}
   <section>
     <div id="carouselHero" class="carousel slide" data-bs-ride="carousel">
@@ -18,24 +44,24 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="{% static 'media/backrooms.JPG' %}" class="d-block w-100" alt="Desks in Basement">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+          <img src="{% static 'media/NyLeX.png' %}" class="d-block w-100" alt="Desks in Basement">
+          <div class="carousel-caption hero-text d-md-block">
+            <h5 class="hero_title">Nylex.net</h5>
+            <p class="CarouselParagraph hero_desc">Your Connection to New Technology.</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="{% static 'media/breakroom.JPG' %}" class="d-block w-100" alt="Breakroom">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+            <h5 class="hero_title">Outsource Us</h5>
+            <p class="CarouselParagraph hero_desc">Allow us to meet your tech needs.</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="{% static 'media/desk.JPG' %}" class="d-block w-100" alt="A desk">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+            <h5 class="hero_title">Enterprise Solutions</h5>
+            <p class="CarouselParagraph hero_desc">Keeping you up to industry standards.</p>
           </div>
         </div>
       </div>
