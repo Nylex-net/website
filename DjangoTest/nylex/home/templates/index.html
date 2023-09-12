@@ -4,9 +4,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="img/ico" href="{% static 'favicon.ico' %}"/>
+    <link rel="icon" type="img/ico" href="{% static 'favicon.ico' %}">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
+    <meta name="keywords" content="nylex, nylex.net, Eureka, Eureka Nylex.Net, Eureka IT services, IT support near Eureka ca, Eureka software development, networking, network solutions, routers, technology solutions, technology, solution provider, it solutions, it consulting, it services, software development, web development, switches, voip, video conferencing, wiring, server, setup, customer support, telecommunications, phone system, cabling">
+    <meta name="description" content="{% block desc %}{% endblock %}">
+    {% block extraTags %}{% endblock %}
     <style>
       .hero_title {
     font-size: 4.5rem;

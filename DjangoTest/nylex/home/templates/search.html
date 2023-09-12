@@ -2,6 +2,14 @@
 
 {% block title %}Search for '{{query}}'{% endblock title %}
 
+{% block desc %}
+  {{ content.description }}
+{% endblock %}
+
+{% block extraTags %}
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="none">
+{% endblock %}
 {% block content %}
 
 {% if query %}
