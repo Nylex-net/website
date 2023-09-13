@@ -3,6 +3,10 @@ const header = document.querySelector('.navbar');
 const reveals = document.querySelectorAll(".reveal");
 
 window.onscroll = () => {
+    scrolled();
+};
+
+function scrolled() {
     // Navbar controls
     if(window.scrollY >= 1) {
         header.classList.remove('transparentNav');
@@ -26,4 +30,6 @@ window.onscroll = () => {
             reveals[i].classList.remove("active");
         }
     }
-};
+}
+
+window.addEventListener('DOMContentLoaded', scrolled());
