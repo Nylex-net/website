@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="img/ico" href="{% static 'favicon.ico' %}">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
     <meta name="keywords" content="nylex, nylex.net, Eureka, Eureka Nylex.Net, Eureka IT services, IT support near Eureka ca, Eureka software development, networking, network solutions, routers, technology solutions, technology, solution provider, it solutions, it consulting, it services, software development, web development, switches, voip, video conferencing, wiring, server, setup, customer support, telecommunications, phone system, cabling">
     <meta name="description" content="{% block desc %}{% endblock %}">
     {% block extraTags %}{% endblock %}
@@ -34,7 +33,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                 <li><a class="dropdown-item" href="about">About Nylex</a></li>
-                <li><a class="dropdown-item" href="contact">Contact</a></li>
+                <li><a class="dropdown-item" href="full-outsource">Full Outsource</a></li>
                 <li><a class="dropdown-item" href="projects">Projects</a></li>
                 <li><a class="dropdown-item" href="careers">Careers</a></li>
                 <li><a class="dropdown-item" href="faq">FAQ</a></li>
@@ -68,13 +67,13 @@
     {% block banned %}{% endblock %}
     <br>
   <header>
-    <h1 class="text-center">{% block header %}{% endblock %}</h1>
+    <h1 class="text-center reveal">{% block header %}{% endblock %}</h1>
   </header>
   <main>
     <div class="container-fluid mt-3">
-      <div class="row">
+      <div class="row reveal">
         <div class="col"></div>
-        <div class="col-sm-12 col-md-10">{% block content %}{% endblock %}</div>
+        <div class="col-sm-12 col-md-6">{% block content %}{% endblock %}</div>
         <div class="col"></div>
       </div>
     </div>
@@ -106,6 +105,7 @@
           <div class="col-6 col-md-2 mb-3">
             <h5>Other</h5>
             <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="full-outsource" class="nav-link p-0 text-muted">Full Outsource</a></li>
               <li class="nav-item mb-2"><a href="faq" class="nav-link p-0 text-muted">FAQ</a></li>
               <li class="nav-item mb-2"><a href="networking-infrastructure" class="nav-link p-0 text-muted">Networking & Infrastructure</a></li>
               <li class="nav-item mb-2"><a href="it-help-desk" class="nav-link p-0 text-muted">IT Help Desk</a></li>
@@ -149,5 +149,5 @@
 <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/jquery-3.7.1.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/scripts.js' %}" type="text/javascript"></script>
+{% block extraScripts %}{% endblock %}
 </html>

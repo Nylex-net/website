@@ -142,5 +142,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 300,
+        'allowedContent': True,
+        'extraAllowedContent': 'data-*'
     },
 }
