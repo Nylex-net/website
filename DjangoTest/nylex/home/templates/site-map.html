@@ -1,5 +1,5 @@
 {% extends "index.html" %}
-
+{% load static %}
 {% block title %}Site-Map{% endblock title %}
 {% block desc %}
   Site Map for Nylex.net's official site.
@@ -8,10 +8,11 @@
 {% block extraTags %}
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="none">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container my-5" style="padding-top: 50px">
     <div class="row">
         {% for post in posts %}
             <div class="col-sm-12 my-3">
