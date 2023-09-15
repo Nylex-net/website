@@ -44,3 +44,10 @@ def search(request):
         return HttpResponse(loader.get_template('search.html').render(context, request))
     else:
         return HttpResponse(loader.get_template('search.html').render({}, request))
+    
+def site_map(request):
+    posts = Page.objects.all().order_by('title')
+    for post in posts:
+        post.content = re.sub(r'<.*?>', '', post.content)
+    context = {'posts':posts}
+    return HttpResponse(loader.get_template('site-map.html').render(context, request))
