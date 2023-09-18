@@ -77,9 +77,14 @@ WSGI_APPLICATION = 'nylex.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'django_db',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'trusted_connection': 'yes',  # Enables Windows Authentication
+            'MARS_Connection': 'yes',  # Optional: Enable Multiple Active Result Sets
+        },
+    },
 }
 
 
