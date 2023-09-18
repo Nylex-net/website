@@ -134,3 +134,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Define the directory where static files will be collected.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'App/static')
+
+# Expire sessions after a specific time (e.g., 30 minutes)
+SESSION_COOKIE_AGE = 1800  # 30 minutes in seconds
+
+# Expire sessions after each request (optional)
+SESSION_SAVE_EVERY_REQUEST = True
+
+# CKEDITOR_BASEPATH = join(STATIC_ROOT, "/ckeditor/ckeditor/")
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'allowedContent': True,
+        'extraAllowedContent': 'data-*'
+    },
+}

@@ -1,0 +1,74 @@
+/* hero background image */
+.bgimage, source {
+    height:100vh;
+    background-size:cover;
+    position:relative;
+    width: 100%;
+    object-fit: fill;
+}
+
+.navbarScroll.navbarDark {
+    background-color: black;
+}
+
+.navbarScroll.navbarLight {
+    background-color: white;
+}
+
+/* ul.navbar-nav {
+    text-align: center;
+} */
+
+.nav-link {
+    font-weight: 600;
+}
+
+.transparentNav {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Reduce the height of the carousel */
+#carouselHero .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.reveal{
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+  
+.reveal.active{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.col-md-6, .col-lg-3 {
+    padding-top: calc(var(--bs-gutter-x) * 0.5);
+    padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+}
+
+/* .horizontal-scroll {
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: 150px;
+    overflow: hidden;
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.list {
+    will-change: transform;
+    transform: translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+} */
