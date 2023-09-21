@@ -17,8 +17,8 @@
  <style>
   /* text css above hero image*/
   .hero_title {
-      font-size: 4.5rem;
-      -webkit-text-stroke-width: 2px;
+      font-size: 7rem;
+      -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: black;
   }
 
@@ -26,7 +26,17 @@
       font-size: 2rem;
   }
 
-  @media (max-width: 488px) {
+  @media (max-width: 719px) {
+    .hero_title {
+      font-size: 4rem;
+      -webkit-text-stroke-width: 2px;
+    }
+    .hero_desc {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 461px) {
     .hero_title {
       font-size: 2.5rem;
     }
@@ -60,24 +70,24 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="{% static 'media/sideLEX.png' %}" class="d-block w-100" alt="Doodle of Nylex Building">
+          <img src="{% static 'media/buildingFull.png' %}" class="d-block w-100" alt="Doodle of Nylex Building">
           <div class="carousel-caption hero-text d-md-block">
             <h5 class="hero_title">Outsource Local</h5>
-            <p class="CarouselParagraph hero_desc">Allow us to meet your company's tech needs.</p>
+            <!-- <p class="CarouselParagraph hero_desc">Allow us to meet your company's tech needs.</p> -->
           </div>
         </div>
         <div class="carousel-item">
           <img src="{% static 'media/sign.png' %}" class="d-block w-100" alt="Building behind fence.">
           <div class="carousel-caption d-none d-md-block">
             <h5 class="hero_title">Say Hello World</h5>
-            <p class="CarouselParagraph hero_desc">We help provide telecommunications and computer networking solutions.</p>
+            <!-- <p class="CarouselParagraph hero_desc">We help provide telecommunications and computer networking solutions.</p> -->
           </div>
         </div>
         <div class="carousel-item">
-          <img src="{% static 'media/fencedLex.png' %}" class="d-block w-100" alt="Side of Building">
+          <img src="{% static 'media/sideLEX.png' %}" class="d-block w-100" alt="Side of Building">
           <div class="carousel-caption d-none d-md-block">
             <h5 class="hero_title">Enterprise Solutions</h5>
-            <p class="CarouselParagraph hero_desc">We keep you up to industry standards.</p>
+            <!-- <p class="CarouselParagraph hero_desc">We keep you up to industry standards.</p> -->
           </div>
         </div>
       </div>
