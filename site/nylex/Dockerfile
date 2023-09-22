@@ -11,7 +11,7 @@ RUN mkdir /webDock
 # Set the /docked directory as the working directory
 WORKDIR /webDock
 
-COPY . ./App
+COPY . .
 
 COPY requirements.txt ./requirements.txt
 
