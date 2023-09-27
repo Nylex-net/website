@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.template import loader
 from django.db.models import Q
 from .models import Page
@@ -15,7 +15,7 @@ class page_view_set(viewsets.ModelViewSet):
         if len(content) <= 0:
             print("No home menu")
             # home(request)
-            return HttpResponseNotFound(loader.get_template('404.html').render(None, request))
+            raise Http404("Page not found")
         else:
             content = content.all().values()[0]
             context = {
@@ -26,9 +26,8 @@ class page_view_set(viewsets.ModelViewSet):
     def template(request, slug):
         content = Page.objects.filter(slug=slug)
         if len(content) <= 0:
-            print("0 results from " + slug)
             # home(request)
-            return HttpResponseNotFound(loader.get_template('404.html').render(None, request))
+            raise Http404("Page not found")
         else:
             content = content.all().values()[0]
             context = {
@@ -55,3 +54,13 @@ class page_view_set(viewsets.ModelViewSet):
             post.content = re.sub(r'<.*?>', '', post.content)
         context = {'posts':posts}
         return HttpResponse(loader.get_template('site-map.html').render(context, request))
+    
+def handler404(request, exception):
+    print("Do I print?")
+    content = Page.objects.filter(slug='404')
+    content = content.all().values()[0]
+    context = {
+        'content': content
+    }
+    print(context)
+    return HttpResponseNotFound(loader.get_template('404.html').render(context, request))
