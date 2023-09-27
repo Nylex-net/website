@@ -3,6 +3,7 @@ FROM python:3.11
 
 # Necessary, so Docker doesn't buffer the output and that you can see the output 
 # of your application (e.g., Django logs) in real-time.
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Make a directory in your Docker image, which you can use to store your source code
@@ -15,8 +16,14 @@ COPY . .
 
 COPY requirements.txt ./requirements.txt
 
-# Get pip to download and install requirements:
+# Update pip to download and install requirements:
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+# copy entrypoint.sh
+COPY ./entrypoint.sh .
+RUN sed -i 's/\r$//g' ./App/entrypoint.sh
+RUN chmod +x ./App/entrypoint.sh
 
 # Expose ports
 EXPOSE 80

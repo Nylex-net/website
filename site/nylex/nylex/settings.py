@@ -35,7 +35,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
 
 # Application definition
@@ -139,7 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Define the directory where static files will be collected.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'App/static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'App/static/media')
 
 # Expire sessions after a specific time (e.g., 30 minutes)
 SESSION_COOKIE_AGE = 1800  # 30 minutes in seconds
