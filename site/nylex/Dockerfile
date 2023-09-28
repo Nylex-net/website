@@ -1,5 +1,5 @@
 # base image
-FROM python:3.11
+FROM python:3.11-slim
 
 # Necessary, so Docker doesn't buffer the output and that you can see the output 
 # of your application (e.g., Django logs) in real-time.
@@ -21,9 +21,9 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' ./App/entrypoint.sh
-RUN chmod +x ./App/entrypoint.sh
+# COPY ./entrypoint.sh .
+# RUN sed -i 's/\r$//g' ./App/entrypoint.sh
+# RUN chmod +x ./App/entrypoint.sh
 
 # Expose ports
 EXPOSE 80
