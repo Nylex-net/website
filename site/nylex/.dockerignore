@@ -1,7 +1,18 @@
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-*.db
+# Git
 .git
-.vscode
+.gitignore
+
+# Docker
+.docker
+
+# Python
+nylex/__pycache__/
+nylex/*/__pycache__/
+nylex/*/*/__pycache__/
+nylex/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
+
+# Local PostgreSQL data
+data/
