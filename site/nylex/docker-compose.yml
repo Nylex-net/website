@@ -8,3 +8,4 @@ services:
      - 80:80
     volumes:
       - ./app:/app
+      - ./data/web:/vol/web

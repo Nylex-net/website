@@ -21,7 +21,11 @@ class page_view_set(viewsets.ModelViewSet):
             context = {
                 'content': content
             }
-            return HttpResponse(loader.get_template('home.html').render(context, request))
+            try:
+                return HttpResponse(loader.get_template('home.html').render(context, request))
+            except Exception as e:
+                print(f"An error occurred: {str(e)}")
+                return HttpResponse(loader.get_template('home.html').render(context, request))
 
     def template(request, slug):
         content = Page.objects.filter(slug=slug)
