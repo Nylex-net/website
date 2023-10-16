@@ -66,7 +66,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'rest_framework',
     'App',
@@ -75,7 +74,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -114,7 +112,14 @@ DATABASES = {
     # ImproperlyConfigured exception if not found
     #
     # The db() method is an alias for db_url().
-    'default': env.db(),
+    # 'default': env.db(),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': env('DB_HOST'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASS')
+    }
 }
 
 
