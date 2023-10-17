@@ -1,4 +1,5 @@
 {% load static %}
+{% load media_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +22,7 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg transparentNav"> <!-- navbar-light bg-light-->
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="{% static '../media/media/TransLex.png' %}" alt="Nylex.net Logo."></a>
+        <a class="navbar-brand" href="/"><img src="{% media_url 'media/TransLex.png' %}" alt="Nylex.net Logo."></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
