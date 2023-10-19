@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% load static %}
+{% load media_tags %}
 
 {% block title %}
   {{ content.title }}
@@ -41,7 +42,7 @@
  <style>
   .bgimage {
     height:100vh;
-    background: url('../static/media/{% block banner %}{{ content.banner }}{% endblock %}');
+    background: url("{% media_url '/' %}{% block banner %}{{ content.banner }}{% endblock %}");
     background-attachment: fixed;
     background-size:cover;
     position:relative;

@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound, Http404
+from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseServerError
 from django.template import loader
 from django.db.models import Q
 from .models import Page
@@ -59,12 +59,20 @@ class page_view_set(viewsets.ModelViewSet):
         context = {'posts':posts}
         return HttpResponse(loader.get_template('site-map.html').render(context, request))
     
-def handler404(request, exception):
-    print("Do I print?")
+def custom404(request, exception):
     content = Page.objects.filter(slug='404')
     content = content.all().values()[0]
     context = {
         'content': content
     }
-    print(context)
+    print(exception)
     return HttpResponseNotFound(loader.get_template('404.html').render(context, request))
+
+def custom500(request):
+    content = Page.objects.filter(slug='500')
+    content = content.all().values()[0]
+    context = {
+        'content': content
+    }
+    # print(exception)
+    return HttpResponseServerError(loader.get_template('404.html').render(context, request))
