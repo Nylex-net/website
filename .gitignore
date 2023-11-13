@@ -1,3 +1,4 @@
 *.env
 *.dev
 backup
+*.pem

@@ -12,16 +12,17 @@ COPY ./scripts /scripts
 
 # Set the working directory in the container
 WORKDIR /nylex
-EXPOSE 8000
+# EXPOSE 8000
 # Install any needed packages specified in requirements.txt
 RUN apt-get update && \
+    # apk add --upgrade --no-cache build-base linux-headers && \
     pip install --upgrade pip && \
     pip install -r requirements.txt && \
-    # addgroup --system app && adduser --system --group app && \
+    # adduser --disabled-password --no-create-home django && \
     mkdir -p /vol/web/static && \
     mkdir -p /vol/web/media && \
     # chown -R app:app /vol && \
-    chmod -R 755 /vol && \
+    chmod -R 775 /vol && \
     chmod -R +x /scripts
 
 # Expose the port your Django app will run on
@@ -33,4 +34,5 @@ USER root
 # Run the Django development server
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
+# Run the Django production server
 CMD ["run.sh"]
