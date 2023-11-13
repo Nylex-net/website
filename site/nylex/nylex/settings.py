@@ -33,7 +33,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True # env('DEBUG')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
@@ -69,20 +69,45 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'App',
-    'ckeditor'
+    'ckeditor',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'nylex.urls'
+
+# For development purposes only.  For production, use the commented CORS_ALLOWED_ORIGINS instead.
+# CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = ['https://ws-henry.nylex.net']
+# CORS_ALLOWED_ORIGINS = [
+#     "https://ws-henry.nylex.net",
+#     "https://www.nylex.net",  # Example for a local development server
+# ]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'access-control-allow-headers',
+    'access-control-allow-methods',
+    'authorization',
+    'content-type',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST'
+]
 
 TEMPLATES = [
     {
