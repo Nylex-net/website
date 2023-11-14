@@ -89,11 +89,7 @@ ROOT_URLCONF = 'nylex.urls'
 
 # For development purposes only.  For production, use the commented CORS_ALLOWED_ORIGINS instead.
 # CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ['https://ws-henry.nylex.net']
-# CORS_ALLOWED_ORIGINS = [
-#     "https://ws-henry.nylex.net",
-#     "https://www.nylex.net",  # Example for a local development server
-# ]
+CSRF_TRUSTED_ORIGINS = ['https://'+env('DOMAIN')]
 
 CORS_ALLOW_CREDENTIALS = True
 
