@@ -33,7 +33,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # env('DEBUG')
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
@@ -89,7 +89,7 @@ ROOT_URLCONF = 'nylex.urls'
 
 # For development purposes only.  For production, use the commented CORS_ALLOWED_ORIGINS instead.
 # CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ['https://'+env('DOMAIN')]
+CSRF_TRUSTED_ORIGINS = ['https://'+env('DOMAIN'), 'https://www.nylex.net']
 
 CORS_ALLOW_CREDENTIALS = True
 
