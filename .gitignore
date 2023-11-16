@@ -3,3 +3,4 @@ docker-compose.yml
 *.dev
 *.pem
 backup
+*.pem
