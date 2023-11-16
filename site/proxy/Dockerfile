@@ -3,12 +3,12 @@ LABEL maintainer="ws-henry"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./default-ssl.conf.tpl /etc/nginx/default-ssl.conf.tpl
-COPY ./cert.pem /etc/nginx/ssl/fullchain.pem
-COPY ./key.pem /etc/nginx/ssl/privkey.pem
+# COPY ./cert.pem /etc/nginx/ssl/fullchain.pem
+# COPY ./key.pem /etc/nginx/ssl/privkey.pem
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
 COPY ./run.sh /run.sh
 
-# ENV LISTEN_PORT=8000
+ENV LISTEN_PORT=80
 ENV APP_HOST=nylex
 ENV APP_PORT=9000
 
@@ -25,6 +25,7 @@ RUN apk add --no-cache openssl bash && \
     chmod +x /run.sh
 
 VOLUME /vol/static
+VOLUME /vol/www
 
 CMD ["/run.sh"]
 
