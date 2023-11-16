@@ -2,3 +2,4 @@
 *.dev
 backup
 *.pem
+docker-compose.yml
