@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11
+FROM python:3.12
 
 # Set environment variables
 ENV PYTHONUNBUFFERED 1
@@ -18,18 +18,19 @@ RUN apt-get update && \
     # apk add --upgrade --no-cache build-base linux-headers && \
     pip install --upgrade pip && \
     pip install -r requirements.txt && \
-    # adduser --disabled-password --no-create-home django && \
     mkdir -p /vol/web/static && \
     mkdir -p /vol/web/media && \
-    # chown -R app:app /vol && \
-    chmod -R 775 /vol && \
+    useradd -ms /bin/bash django && \
+    chown -R django:django /nylex && \
+    chown -R django:django /vol && \
+    chmod -R 755 /vol && \
     chmod -R +x /scripts
 
 # Expose the port your Django app will run on
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
-USER root
+USER django
 
 # Run the Django development server
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
