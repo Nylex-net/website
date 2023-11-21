@@ -1,0 +1,17 @@
+version: '3'
+services:
+  core:
+    build:
+      context: .
+    command: >
+      sh -c "cd core && \
+      python manage.py runserver 0.0.0.0:80"
+    ports:
+      - "80:80"  # Expose Django on port 80
+    volumes:
+      - ./core:/core
+      - ./data/web:/vol/web
+    environment:
+      - SECRET_KEY=my_secret_key
+      - DEBUG=1
+      - ALLOWED_HOSTS=localhost 127.0.0.1
