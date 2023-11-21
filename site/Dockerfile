@@ -9,11 +9,14 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 COPY ./requirements.txt /requirements.txt
 COPY ./nylex /nylex
+# VOLUME /vol/web
 COPY ./scripts /scripts
 
 # Set the working directory in the container
 WORKDIR /nylex
-EXPOSE 8000
+
+# Expose the port your Django app will run on
+# EXPOSE 8000
 # Install any needed packages specified in requirements.txt
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
@@ -28,13 +31,10 @@ RUN python -m venv /py && \
     adduser --disabled-password --no-create-home django && \
     mkdir -p /vol/web/static && \
     mkdir -p /vol/web/media && \
-    # useradd -ms /bin/bash django && \
-    # chown -R django:django /nylex && \
+    chown -R django:django /nylex && \
     chown -R django:django /vol && \
-    chmod -R 755 /vol && \
+    chmod -R 775 /vol && \
     chmod -R +x /scripts
-
-# Expose the port your Django app will run on
 
 ENV PATH="/scripts:/py/bin:$PATH"
 

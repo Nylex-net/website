@@ -38,9 +38,9 @@ services:
       - 443:443
     volumes:
       - static-data:/vol/static
-      - certbot-web:/vol/www
+      # - certbot-web:/vol/www
       - proxy-dhparams:/vol/proxy
-      - certbot-certs:/etc/letsencrypt
+      # - certbot-certs:/etc/letsencrypt
     environment:
       - DOMAIN=${DOMAIN}
 
@@ -61,6 +61,6 @@ services:
 volumes:
   postgres-data:
   static-data:
-  certbot-web:
+  # certbot-web:
   proxy-dhparams:
-  certbot-certs:
+  # certbot-certs:
