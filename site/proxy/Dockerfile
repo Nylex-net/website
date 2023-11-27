@@ -1,4 +1,4 @@
-FROM nginx:1.23.0-alpine
+FROM nginx:1.25.3-alpine
 LABEL maintainer="ws-henry"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
