@@ -21,7 +21,7 @@
             <div class="col-md-4 my-3">
                 <div class="card" >
                     <div class="card-body">
-                    <h5 class="card-title"><a href="{{post.slug}}" class="text-decoration-none text-dark">{{post.title}}</a></h5>
+                    <h5 class="card-title"><a href="/{{post.slug}}" class="text-decoration-none text-dark">{{post.title}}</a></h5>
                     {% if post.content|length > 100 %}
                         <p>{{post.content|slice:"0:100"|safe}} ...</p>
                     {% else %}

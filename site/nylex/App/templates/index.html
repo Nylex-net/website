@@ -22,7 +22,7 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg transparentNav"> <!-- navbar-light bg-light-->
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="{% media_url 'media/TransLex.png' %}" alt="Nylex.net Logo."></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% media_url 'media/TransLex.png' %}" alt="Nylex.net Logo."></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,26 +33,26 @@
                 About
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="about">About Nylex</a></li>
-                <li><a class="dropdown-item" href="full-outsource">Full Outsource</a></li>
-                <li><a class="dropdown-item" href="careers">Careers</a></li>
-                <li><a class="dropdown-item" href="faq">FAQ</a></li>
+                <li><a class="dropdown-item" href="/about">About Nylex</a></li>
+                <li><a class="dropdown-item" href="/full-outsource">Full Outsource</a></li>
+                <li><a class="dropdown-item" href="/careers">Careers</a></li>
+                <li><a class="dropdown-item" href="/faq">FAQ</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="a-la-carte">Outsource</a>
+              <a class="nav-link" href="/a-la-carte">Outsource</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                 Services
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="infrastructure">Infrastructure</a></li>
-                <li><a class="dropdown-item" href="servers-networks">Servers & Networks</a></li>
-                <li><a class="dropdown-item" href="wifi">WiFi</a></li>
-                <li><a class="dropdown-item" href="phones">Phones</a></li>
-                <li><a class="dropdown-item" href="nvr">NVR</a></li>
-                <li><a class="dropdown-item" href="desktop">Desktop</a></li>
+                <li><a class="dropdown-item" href="/infrastructure">Infrastructure</a></li>
+                <li><a class="dropdown-item" href="/servers-networks">Servers & Networks</a></li>
+                <li><a class="dropdown-item" href="/wifi">WiFi</a></li>
+                <li><a class="dropdown-item" href="/phones">Phones</a></li>
+                <li><a class="dropdown-item" href="/nvr">NVR</a></li>
+                <li><a class="dropdown-item" href="/desktop">Desktop</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -60,15 +60,15 @@
                 More
               </a>
               <ul class="dropdown-menu" aria-labelledby="ProjectsDropdown">
-                <li><a class="dropdown-item" href="projects">Projects</a></li>
-                <li><a class="dropdown-item" href="infrastructure">Infrastructure</a></li>
-                <li><a class="dropdown-item" href="it-help-desk">IT Help Desk</a></li>
-                <li><a class="dropdown-item" href="phones-cameras-wireless">Phones, Cameras, Wireless</a></li>
-                <li><a class="dropdown-item" href="cybersecurity">CyberSecurity</a></li>
+                <li><a class="dropdown-item" href="/projects">Projects</a></li>
+                <li><a class="dropdown-item" href="/infrastructure">Infrastructure</a></li>
+                <li><a class="dropdown-item" href="/it-help-desk">IT Help Desk</a></li>
+                <li><a class="dropdown-item" href="/phones-cameras-wireless">Phones, Cameras, Wireless</a></li>
+                <li><a class="dropdown-item" href="/cybersecurity">CyberSecurity</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact">Support & Contact</a>
+              <a class="nav-link" href="/contact">Support & Contact</a>
             </li>
           </ul>
           <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
@@ -101,13 +101,13 @@
             <h5>Nylex.net</h5>
             <ul class="nav flex-column">
               <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Home</a></li>
-              <li class="nav-item mb-2"><a href="about" class="nav-link p-0 text-muted">About</a></li>
-              <li class="nav-item mb-2"><a href="a-la-carte" class="nav-link p-0 text-muted">Outsource</a></li>
-              <li class="nav-item mb-2"><a href="contact" class="nav-link p-0 text-muted">Support & Contact</a></li>
-              <li class="nav-item mb-2"><a href="projects" class="nav-link p-0 text-muted">Projects</a></li>
-              <li class="nav-item mb-2"><a href="terms-of-use" class="nav-link p-0 text-muted">Terms of Use</a></li>
-              <li class="nav-item mb-2"><a href="privacy-policy" class="nav-link p-0 text-muted">Privacy Policy</a></li>
-              <li class="nav-item mb-2"><a href="site-map" class="nav-link p-0 text-muted">Site Map</a></li>
+              <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-muted">About</a></li>
+              <li class="nav-item mb-2"><a href="/a-la-carte" class="nav-link p-0 text-muted">Outsource</a></li>
+              <li class="nav-item mb-2"><a href="/contact" class="nav-link p-0 text-muted">Support & Contact</a></li>
+              <li class="nav-item mb-2"><a href="/projects" class="nav-link p-0 text-muted">Projects</a></li>
+              <li class="nav-item mb-2"><a href="/terms-of-use" class="nav-link p-0 text-muted">Terms of Use</a></li>
+              <li class="nav-item mb-2"><a href="/privacy-policy" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+              <li class="nav-item mb-2"><a href="/site-map" class="nav-link p-0 text-muted">Site Map</a></li>
             </ul>
           </div>
           <div class="col-6 col-md-2 mb-3">
@@ -123,12 +123,12 @@
           <div class="col-6 col-md-2 mb-3">
             <h5>Other</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="full-outsource" class="nav-link p-0 text-muted">Full Outsource</a></li>
-              <li class="nav-item mb-2"><a href="faq" class="nav-link p-0 text-muted">FAQ</a></li>
-              <li class="nav-item mb-2"><a href="infrastructure" class="nav-link p-0 text-muted">Infrastructure</a></li>
-              <li class="nav-item mb-2"><a href="it-help-desk" class="nav-link p-0 text-muted">IT Help Desk</a></li>
-              <li class="nav-item mb-2"><a href="phones-cameras-wireless" class="nav-link p-0 text-muted">Phones, Cameras, Wireless</a></li>
-              <li class="nav-item mb-2"><a href="cybersecurity" class="nav-link p-0 text-muted">CyberSecurity</a></li>
+              <li class="nav-item mb-2"><a href="/full-outsource" class="nav-link p-0 text-muted">Full Outsource</a></li>
+              <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0 text-muted">FAQ</a></li>
+              <li class="nav-item mb-2"><a href="/infrastructure" class="nav-link p-0 text-muted">Infrastructure</a></li>
+              <li class="nav-item mb-2"><a href="/it-help-desk" class="nav-link p-0 text-muted">IT Help Desk</a></li>
+              <li class="nav-item mb-2"><a href="/phones-cameras-wireless" class="nav-link p-0 text-muted">Phones, Cameras, Wireless</a></li>
+              <li class="nav-item mb-2"><a href="/cybersecurity" class="nav-link p-0 text-muted">CyberSecurity</a></li>
             </ul>
           </div>
           <div class="col-md-5 offset-md-1 mb-3">

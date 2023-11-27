@@ -87,6 +87,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nylex.urls'
 
+APPEND_SLASH = True
+
 # For development purposes only.  For production, use the commented CORS_ALLOWED_ORIGINS instead.
 # CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = ['https://ws-henry.nylex.net', 'https://www.nylex.net']
