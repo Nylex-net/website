@@ -1,5 +1,5 @@
 FROM nginx:1.25.3-alpine
-LABEL maintainer="ws-henry"
+LABEL maintainer="henatic"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./default-ssl.conf.tpl /etc/nginx/default-ssl.conf.tpl
