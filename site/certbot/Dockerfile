@@ -1,7 +1,8 @@
-FROM certbot/certbot:v1.27.0
+FROM certbot/certbot:latest
 
 COPY ./ /opt
-RUN /usr/local/bin/python -m pip install --upgrade pip && \
+RUN apk update && apk upgrade && \
+    /usr/local/bin/python -m pip install --upgrade pip && \
     /usr/local/bin/python -m pip install certbot-dns-desec && \
     chmod +x /opt/certify-init.sh && \
     chmod +x /opt/renew.sh && \
