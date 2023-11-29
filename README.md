@@ -14,6 +14,7 @@ For the new Nylex website, I chose to use Django. If you're unfamiliar with Djan
 - PostgreSQL
 - Bootstrap 5.0
 - nginx
+- alpine
 - Docker
 
 I wanted to design this new application with the intention that it's secure, easy to manage and customize, and it runs fairly quickly. To accomplish this, I decided these were the best tools to use.
