@@ -28,6 +28,10 @@ class page_view_set(viewsets.ModelViewSet):
                 return HttpResponse(loader.get_template('home.html').render(context, request))
 
     def template(request, slug):
+        if slug == '500':
+            return custom500()
+        elif slug == '404':
+            raise Http404("Page not found")
         content = Page.objects.filter(slug=slug)
         if len(content) <= 0:
             # home(request)
@@ -53,7 +57,7 @@ class page_view_set(viewsets.ModelViewSet):
             return HttpResponse(loader.get_template('search.html').render({}, request))
         
     def site_map(request):
-        posts = Page.objects.all().order_by('title')
+        posts = Page.objects.exclude(slug='404').exclude(slug='500').order_by('title')
         for post in posts:
             post.content = re.sub(r'<.*?>', '', post.content)
         context = {'posts':posts}
