@@ -18,7 +18,8 @@ WORKDIR /nylex
 # Expose the port your Django app will run on
 # EXPOSE 8000
 # Install any needed packages specified in requirements.txt
-RUN python -m venv /py && \
+RUN apk update && apk upgrade && \
+    python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client && \
     apk add --update --no-cache --virtual .tmp-deps \

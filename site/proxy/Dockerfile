@@ -16,7 +16,8 @@ ENV APP_PORT=9000
 
 USER root
 
-RUN apk add --no-cache openssl bash && \
+RUN apk update && apk upgrade && \
+    apk add --no-cache openssl bash && \
     mkdir -p /vol/static && \  
     chmod 755 /vol/static && \
     touch /etc/nginx/conf.d/default.conf && \
