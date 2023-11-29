@@ -4,8 +4,8 @@ LABEL maintainer="henatic"
 COPY . /etc/nginx/
 
 # Comment and uncomment the two COPY Commands below to test with or without certbot container.
-COPY ./cert.pem /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
-COPY ./key.pem /etc/letsencrypt/live/${DOMAIN}/privkey.pem
+# COPY ./cert.pem /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
+# COPY ./key.pem /etc/letsencrypt/live/${DOMAIN}/privkey.pem
 
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
 COPY ./run.sh /run.sh
