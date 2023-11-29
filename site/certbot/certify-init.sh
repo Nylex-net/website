@@ -15,11 +15,27 @@ done
 
 echo "Getting certificate..."
 
+# certbot certonly \
+#     --webroot \
+#     --webroot-path "/vol/www/" \
+#     -d "$DOMAIN" \
+#     --email $EMAIL \
+#     --rsa-key-size 4096 \
+#     --agree-tos \
+#     --noninteractive
+
+# certbot certonly \
+#   --webroot \
+#   --webroot-path "/vol/www/" \
+#   --dns-dnspython \
+#   --dns-dnspython-credentials /deSEC.ini \
+#   -d $DOMAIN \
+#   --email $EMAIL \
+#   --rsa-key-size 4096 \
+#   --agree-tos \
+#   --noninteractive
+
 certbot certonly \
-    --webroot \
-    --webroot-path "/vol/www/" \
-    -d "$DOMAIN" \
-    --email $EMAIL \
-    --rsa-key-size 4096 \
-    --agree-tos \
-    --noninteractive
+    --authenticator dns-desec \
+    --dns-desec-credentials /opt/deSEC.ini \
+    -d "$DOMAIN"

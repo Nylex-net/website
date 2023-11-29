@@ -13,7 +13,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
       - SECRET_KEY=${SECRET_KEY}
-      - ALLOWED_HOSTS=${DOMAIN}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
     depends_on:
       - db
 
@@ -38,29 +38,29 @@ services:
       - 443:443
     volumes:
       - static-data:/vol/static
-      # - certbot-web:/vol/www
+      - certbot-web:/vol/www
       - proxy-dhparams:/vol/proxy
-      # - certbot-certs:/etc/letsencrypt
+      - certbot-certs:/etc/letsencrypt
     environment:
       - DOMAIN=${DOMAIN}
 
 # Comment out certbot configurations until it works.
-  # certbot:
-  #   build:
-  #     context: ./certbot
-  #   command: echo "Skipping..."
-  #   environment:
-  #     - EMAIL=${ACME_DEFAULT_EMAIL}
-  #     - DOMAIN=${DOMAIN}
-  #   volumes:
-  #     - certbot-web:/vol/www
-  #     - certbot-certs:/etc/letsencrypt/
-  #   depends_on:
-  #     - proxy
+  certbot:
+    build:
+      context: ./certbot
+    # command: echo "Skipping..."
+    environment:
+      - EMAIL=${ACME_DEFAULT_EMAIL}
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - certbot-web:/vol/www
+      - certbot-certs:/etc/letsencrypt/
+    depends_on:
+      - proxy
 
 volumes:
   postgres-data:
   static-data:
-  # certbot-web:
+  certbot-web:
   proxy-dhparams:
-  # certbot-certs:
+  certbot-certs:

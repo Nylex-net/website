@@ -9,7 +9,7 @@ if [ ! -f "/vol/proxy/ssl-dhparams.pem" ]; then
 fi
 
 echo "Checking for fullchain.pem"
-if [ ! -f "/etc/nginx/ssl/fullchain.pem" ]; then
+if [ ! -f "/etc/letsencrypt/live/${DOMAIN}/fullchain.pem" ]; then
   echo "No SSL cert, enabling HTTP only..."
   envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf
 else

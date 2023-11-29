@@ -163,3 +163,4 @@ docker-compose.yml
 *.pem
 backup
 *.pem
+*.ini

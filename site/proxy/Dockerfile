@@ -1,12 +1,11 @@
 FROM nginx:1.25.3-alpine
 LABEL maintainer="henatic"
 
-COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
-COPY ./default-ssl.conf.tpl /etc/nginx/default-ssl.conf.tpl
+COPY . /etc/nginx/
 
-# Comment and uncomment the two COPY Commands to test with or without certbot container.
-COPY ./cert.pem /etc/nginx/ssl/fullchain.pem
-COPY ./key.pem /etc/nginx/ssl/privkey.pem
+# Comment and uncomment the two COPY Commands below to test with or without certbot container.
+COPY ./cert.pem /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
+COPY ./key.pem /etc/letsencrypt/live/${DOMAIN}/privkey.pem
 
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
 COPY ./run.sh /run.sh
