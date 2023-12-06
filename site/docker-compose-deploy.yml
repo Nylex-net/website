@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   nylex:
+    # image: django-website
     build:
       context: .
     restart: always
@@ -28,6 +29,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
 
   proxy:
+    # image: proxy
     build:
       context: ./proxy
     restart: always
@@ -46,6 +48,7 @@ services:
 
 # Comment out certbot configurations until it works.
   certbot:
+    # image: certbot
     build:
       context: ./certbot
     # command: echo "Skipping..."
