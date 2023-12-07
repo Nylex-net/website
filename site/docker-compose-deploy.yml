@@ -46,7 +46,7 @@ services:
     environment:
       - DOMAIN=${DOMAIN}
     labels:
-      kompose.service.type: LoadBalancer
+      kompose.service.expose: "ws-henry.example.com"
 
 # Comment out certbot configurations until it works.
   certbot:
