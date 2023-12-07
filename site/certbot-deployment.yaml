@@ -28,9 +28,9 @@ spec:
       containers:
         - env:
             - name: DOMAIN
-              value: "${DOMAIN}"
+              value: ${DOMAIN}
             - name: EMAIL
-              value: "${ACME_DEFAULT_EMAIL}"
+              value: ${ACME_DEFAULT_EMAIL}
           image: certbot
           name: certbot
           resources: {}
