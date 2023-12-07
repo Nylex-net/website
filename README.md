@@ -18,3 +18,5 @@ For the new Nylex website, I chose to use Django. If you're unfamiliar with Djan
 - Docker
 
 I wanted to design this new application with the intention that it's secure, easy to manage and customize, and it runs fairly quickly. To accomplish this, I decided these were the best tools to use.
+
+The main website data is in the folder titled "site."  The other folder was a test folder to get myself used to Django's framework.
