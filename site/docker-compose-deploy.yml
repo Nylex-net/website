@@ -2,8 +2,9 @@ version: "3.9"
 
 services:
   nylex:
+    image: django-nylex
     build:
-      dockerfile: Dockerfile
+      # dockerfile: Dockerfile
       context: .
     restart: always
     volumes:
@@ -29,8 +30,9 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
 
   proxy:
+    image: nginx-proxy
     build:
-      dockerfile: Dockerfile
+      # dockerfile: Dockerfile
       context: ./proxy
     restart: always
     depends_on:
@@ -45,13 +47,14 @@ services:
       - certbot-certs:/etc/letsencrypt
     environment:
       - DOMAIN=${DOMAIN}
-    labels:
-      kompose.service.expose: "ws-henry.example.com"
+    # labels:
+    #   kompose.service.expose: "ws-henry.example.com"
 
 # Comment out certbot configurations until it works.
   certbot:
+    image: certbot
     build:
-      dockerfile: Dockerfile
+      # dockerfile: Dockerfile
       context: ./certbot
     # command: echo "Skipping..."
     environment:
