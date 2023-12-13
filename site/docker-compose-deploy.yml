@@ -2,9 +2,8 @@ version: "3.9"
 
 services:
   nylex:
-    image: django-nylex
+    # image: django-nylex
     build:
-      # dockerfile: Dockerfile
       context: .
     restart: always
     volumes:
@@ -30,9 +29,8 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
 
   proxy:
-    image: nginx-proxy
+    # image: nginx-proxy
     build:
-      # dockerfile: Dockerfile
       context: ./proxy
     restart: always
     depends_on:
@@ -52,9 +50,8 @@ services:
 
 # Comment out certbot configurations until it works.
   certbot:
-    image: certbot
+    # image: certbot
     build:
-      # dockerfile: Dockerfile
       context: ./certbot
     # command: echo "Skipping..."
     restart: always
