@@ -7,9 +7,14 @@ ENV PYTHONUNBUFFERED 1
 # ENV DJANGO_SETTINGS_MODULE nylex.settings
 ENV PYTHONDONTWRITEBYTECODE 1
 
+# Grab copy of requirements file to install dependencies.
 COPY ./requirements.txt /requirements.txt
+
+# Copy directory of Django project.
 COPY ./nylex /nylex
 # VOLUME /vol/web
+
+# Copy shell script to start application.
 COPY ./scripts /scripts
 
 # Set the working directory in the container
@@ -17,7 +22,8 @@ WORKDIR /nylex
 
 # Expose the port your Django app will run on
 # EXPOSE 8000
-# Install any needed packages specified in requirements.txt
+# Install any needed packages specified in requirements.txt,
+# Create a non-root user, and set ownership to that user.
 RUN apk update && apk upgrade && \
     python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
@@ -39,6 +45,7 @@ RUN apk update && apk upgrade && \
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
+# Switch to created user to avoid running as root user.
 USER django
 
 # Run the Django development server

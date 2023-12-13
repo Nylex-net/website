@@ -1,5 +1,6 @@
 FROM certbot/certbot:latest
 
+# Commands to update, create directories, and set permissions.
 COPY ./ /opt
 RUN apk update && apk upgrade && \
     /usr/local/bin/python -m pip install --upgrade pip && \
@@ -10,5 +11,8 @@ RUN apk update && apk upgrade && \
     chmod 600 /opt/renewal-deSEC.ini && \
     chmod +x /opt/acme-dns-auth.py
 
+# Comment/Uncomment for renewal of .pem files.
 ENTRYPOINT ["/opt/renew.sh"]
+
+# Comment/Uncomment for creation of .pem files.
 # CMD ["/opt/certify-init.sh"]
