@@ -165,3 +165,4 @@ backup
 *.pem
 *.ini
 *.docx
+*.tmp
