@@ -57,6 +57,7 @@ services:
       # dockerfile: Dockerfile
       context: ./certbot
     # command: echo "Skipping..."
+    restart: always
     environment:
       - EMAIL=${ACME_DEFAULT_EMAIL}
       - DOMAIN=${DOMAIN}
