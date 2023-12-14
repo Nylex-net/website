@@ -12,7 +12,7 @@ For the new Nylex website, I chose to use Django. If you're unfamiliar with Djan
     - Javascript
 - Django
 - PostgreSQL
-- Bootstrap 5.0
+- Bootstrap 5
 - nginx
 - alpine
 - Docker
