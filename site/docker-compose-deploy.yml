@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   nylex:
-    # image: django-nylex
+    image: django-nylex
     build:
       context: .
     restart: always
@@ -29,7 +29,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
 
   proxy:
-    # image: nginx-proxy
+    image: nginx-proxy
     build:
       context: ./proxy
     restart: always
@@ -45,12 +45,12 @@ services:
       - certbot-certs:/etc/letsencrypt
     environment:
       - DOMAIN=${DOMAIN}
-    # labels:
-    #   kompose.service.expose: "ws-henry.example.com"
+    labels:
+      kompose.service.expose: "ws-henry.example.com"
 
 # Comment out certbot configurations until it works.
   certbot:
-    # image: certbot
+    image: certbot
     build:
       context: ./certbot
     # command: echo "Skipping..."

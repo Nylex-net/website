@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose-deploy.yml
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
     kompose.version: 1.31.2 (a92241f79)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose-deploy.yml
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
         kompose.version: 1.31.2 (a92241f79)
       creationTimestamp: null
       labels:
@@ -26,19 +26,25 @@ spec:
         io.kompose.service: certbot
     spec:
       containers:
-        - env:
-            - name: DOMAIN
-              value: ${DOMAIN}
-            - name: EMAIL
-              value: ${ACME_DEFAULT_EMAIL}
-          image: certbot
-          name: certbot
-          resources: {}
-          volumeMounts:
-            - mountPath: /vol/www
-              name: certbot-web
-            - mountPath: /etc/letsencrypt
-              name: certbot-certs
+      - name: certbot
+        image: nylexdotnet/website:certbot
+        env:
+        - name: DOMAIN
+          valueFrom:
+            secretKeyRef:
+              name: nylex-secret
+              key: DOMAIN
+        - name: ACME_DEFAULT_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: nylex-secret
+              key: ACME_DEFAULT_EMAIL
+        resources: {}
+        volumeMounts:
+          - mountPath: /vol/www
+            name: certbot-web
+          - mountPath: /etc/letsencrypt
+            name: certbot-certs
       restartPolicy: Always
       volumes:
         - name: certbot-web

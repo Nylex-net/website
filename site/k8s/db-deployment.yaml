@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose-deploy.yml
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
     kompose.version: 1.31.2 (a92241f79)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose-deploy.yml
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
         kompose.version: 1.31.2 (a92241f79)
       creationTimestamp: null
       labels:
@@ -26,19 +26,28 @@ spec:
         io.kompose.service: db
     spec:
       containers:
-        - env:
-            - name: POSTGRES_DB
-              value: ${DB_NAME}
-            - name: POSTGRES_PASSWORD
-              value: ${DB_PASS}
-            - name: POSTGRES_USER
-              value: ${DB_USER}
-          image: postgres:13-alpine
-          name: db
-          resources: {}
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgres-data
+      - name: db
+        image: postgres:13-alpine
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: nylex-secret
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: nylex-secret
+              key: DB_USER
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: nylex-secret
+              key: DB_PASS
+        resources: {}
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-data
       restartPolicy: Always
       volumes:
         - name: postgres-data
