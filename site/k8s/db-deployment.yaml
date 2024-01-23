@@ -28,21 +28,23 @@ spec:
       containers:
       - name: db
         image: postgres:13-alpine
+        ports:
+        - containerPort: 5432
         env:
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
-              name: nylex-secret
+              name: db-secret
               key: DB_NAME
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: nylex-secret
+              name: db-secret
               key: DB_USER
-        - name: DB_PASS
+        - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: nylex-secret
+              name: db-secret
               key: DB_PASS
         resources: {}
         volumeMounts:

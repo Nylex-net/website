@@ -169,3 +169,4 @@ backup
 
 # Kubernetes secrets.
 nylex-secret.yaml
+db-secret.yaml

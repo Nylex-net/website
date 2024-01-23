@@ -7,6 +7,7 @@ resources:
 - certbot-deployment.yaml
 - certbot-web-persistentvolumeclaim.yaml
 - db-configmap.yaml
+- db-secret.yaml
 - db-deployment.yaml
 - db-service.yaml
 - nylex-configmap.yaml
