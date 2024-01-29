@@ -10,10 +10,10 @@ metadata:
   name: nylex
 spec:
   ports:
-    - name: "8000"
+    - name: "9000"
       protocol: TCP
-      port: 8000
-      targetPort: 8000
+      port: 9000
+      targetPort: 9000
   selector:
     io.kompose.service: nylex
 status:
