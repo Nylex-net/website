@@ -53,6 +53,8 @@ spec:
       restartPolicy: Always
       volumes:
         - name: postgres-data
-          persistentVolumeClaim:
-            claimName: postgres-data
+          hostPath:
+            path: /var/lib/postgresql/data
+          # persistentVolumeClaim:
+          #   claimName: postgres-data
 status: {}

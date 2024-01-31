@@ -56,15 +56,23 @@ spec:
       restartPolicy: Always
       volumes:
         - name: static-data
-          persistentVolumeClaim:
-            claimName: static-data
+          hostPath:
+            path: /vol/static
+          # persistentVolumeClaim:
+          #   claimName: static-data
         - name: certbot-web
-          persistentVolumeClaim:
-            claimName: certbot-web
+          hostPath:
+            path: /vol/www
+          # persistentVolumeClaim:
+          #   claimName: certbot-web
         - name: proxy-dhparams
-          persistentVolumeClaim:
-            claimName: proxy-dhparams
+          hostPath:
+            path: /vol/proxy
+          # persistentVolumeClaim:
+          #   claimName: proxy-dhparams
         - name: certbot-certs
-          persistentVolumeClaim:
-            claimName: certbot-certs
+          hostPath:
+            path: /etc/letsencrypt
+          # persistentVolumeClaim:
+          #   claimName: certbot-certs
 status: {}

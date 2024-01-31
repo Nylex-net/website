@@ -66,6 +66,8 @@ spec:
       restartPolicy: Always
       volumes:
         - name: static-data
-          persistentVolumeClaim:
-            claimName: static-data
+          hostPath:
+            path: /vol/web
+          # persistentVolumeClaim:
+          #   claimName: static-data
 status: {}
