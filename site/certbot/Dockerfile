@@ -15,4 +15,4 @@ RUN apk update && apk upgrade && \
 ENTRYPOINT ["/opt/renew.sh"]
 
 # Comment/Uncomment for creation of .pem files.
-# CMD ["/opt/certify-init.sh"]
+CMD ["/opt/certify-init.sh"]
