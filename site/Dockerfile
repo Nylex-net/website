@@ -40,13 +40,13 @@ RUN apk update && apk upgrade && \
     mkdir -p /vol/web/media && \
     chown -R django:django /nylex && \
     chown -R django:django /vol && \
-    chmod -R 775 /vol && \
+    chmod -R 755 /vol && \
     chmod -R +x /scripts
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
 # Switch to created user to avoid running as root user.
-USER django
+USER root
 
 # Run the Django development server
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

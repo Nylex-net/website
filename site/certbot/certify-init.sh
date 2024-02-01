@@ -38,4 +38,6 @@ echo "Getting certificate..."
 certbot certonly \
     --authenticator dns-desec \
     --dns-desec-credentials /opt/deSEC.ini \
-    -d "$DOMAIN"
+    -d "$DOMAIN" \
+    -m "$ACME_DEFAULT_EMAIL" \
+    --agree-tos -n
