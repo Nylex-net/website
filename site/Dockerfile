@@ -10,6 +10,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Grab copy of requirements file to install dependencies.
 COPY ./requirements.txt /requirements.txt
 
+# Grab backup file of postgreSQL database.
+COPY ./backup_file.dump /backup_file.dump
+
 # Copy directory of Django project.
 COPY ./nylex /nylex
 # VOLUME /vol/web
@@ -41,7 +44,8 @@ RUN apk update && apk upgrade && \
     chown -R django:django /nylex && \
     chown -R django:django /vol && \
     chmod -R 755 /vol && \
-    chmod -R +x /scripts
+    chmod -R +x /scripts && \
+    chmod -R +x /backup_file.dump
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
