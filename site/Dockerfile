@@ -17,6 +17,8 @@ COPY ./backup_file.dump /backup_file.dump
 COPY ./nylex /nylex
 # VOLUME /vol/web
 
+COPY ./nylex/static/media /vol/web/media/
+
 # Copy shell script to start application.
 COPY ./scripts /scripts
 
@@ -44,8 +46,7 @@ RUN apk update && apk upgrade && \
     chown -R django:django /nylex && \
     chown -R django:django /vol && \
     chmod -R 755 /vol && \
-    chmod -R +x /scripts && \
-    chmod -R +x /backup_file.dump
+    chmod -R +x /scripts
 
 ENV PATH="/scripts:/py/bin:$PATH"
 

@@ -167,6 +167,7 @@ backup
 *.docx
 *.tmp
 backup_file.dump
+backup_data.json
 
 # Kubernetes secrets.
 nylex-secret.yaml

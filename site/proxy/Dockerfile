@@ -33,6 +33,7 @@ RUN apk update && apk upgrade && \
 
 # Set directories in volumes.
 VOLUME /vol/static
+VOLUME /vol/media
 VOLUME /vol/www
 
 # Run shell script for production.

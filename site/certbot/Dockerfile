@@ -12,7 +12,7 @@ RUN apk update && apk upgrade && \
     chmod +x /opt/acme-dns-auth.py
 
 # Comment/Uncomment for renewal of .pem files.
-CMD ["/opt/renew.sh"]
+ENTRYPOINT ["/opt/renew.sh"]
 
 # Comment/Uncomment for creation of .pem files.
-ENTRYPOINT ["/opt/certify-init.sh"]
+CMD ["/opt/certify-init.sh"]
