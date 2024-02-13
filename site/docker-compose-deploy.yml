@@ -29,7 +29,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
 
   proxy:
-    image: nginx-proxy
+    # image: nginx-proxy
     build:
       context: ./proxy
     restart: always

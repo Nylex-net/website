@@ -50,7 +50,7 @@ RUN apk update && apk upgrade && \
 ENV PATH="/scripts:/py/bin:$PATH"
 
 # Switch to created user to avoid running as root user.
-USER django
+USER root
 
 # Run the Django development server
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
