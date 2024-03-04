@@ -7,10 +7,10 @@ LICENSE
 .docker
 
 # Python
-app/__pycache__/
-app/*/__pycache__/
-app/*/*/__pycache__/
-app/*/*/*/__pycache__/
+nylex/__pycache__/
+nylex/*/__pycache__/
+nylex/*/*/__pycache__/
+nylex/*/*/*/__pycache__/
 .env/
 .venv/
 venv/
@@ -19,3 +19,8 @@ myworld/
 
 # Local PostgreSQL data
 data/
+
+# Duplicate media folders consisting of media.
+nylex/staticfiles/media/
+nylex/media/
+nylex/App/media/
