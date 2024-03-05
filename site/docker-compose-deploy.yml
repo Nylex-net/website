@@ -8,7 +8,7 @@ services:
     restart: always
     volumes:
       - static-data:/vol/web
-      - media:/vol/media
+      # - media:/vol/media
     environment:
       - DB_HOST=db
       - DB_NAME=${DB_NAME}
@@ -41,7 +41,7 @@ services:
       - 443:443
     volumes:
       - static-data:/vol/static
-      - media:/vol/media
+      # - media:/vol/media
       - certbot-web:/vol/www
       - proxy-dhparams:/vol/proxy
       - certbot-certs:/etc/letsencrypt
@@ -69,7 +69,7 @@ services:
 volumes:
   postgres-data:
   static-data:
-  media:
+  # media:
   certbot-web:
   proxy-dhparams:
   certbot-certs:

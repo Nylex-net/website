@@ -11,7 +11,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 COPY ./requirements.txt /requirements.txt
 
 # Grab backup file of postgreSQL database.
-COPY ./backup_file.dump /backup_file.dump
+# COPY ./backup_file.dump /backup_file.dump
 
 # Copy directory of Django project.
 COPY ./nylex /nylex
