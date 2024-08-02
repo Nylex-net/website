@@ -1,4 +1,3 @@
-from io import StringIO
 from django.core.management.base import BaseCommand
 from App.models import Page
 
@@ -13,13 +12,13 @@ class Command(BaseCommand):
                                 slug='home',
                                 header='Outsource from Humboldt',
                                 banner='media/TransLex.png',
-                                content=self.CONTENT)
+                                content=self.HOME_CONTENT)
             self.stdout.write(self.style.SUCCESS('Successfully created default objects'))
         else:
             self.stdout.write(self.style.SUCCESS('Default objects already exist'))
 
     def __init__(self):
-        CONTENT = """
+        self.HOME_CONTENT = """
             <p class="reveal">We are a solution provider for any of your technological needs.&nbsp; We provide a wide range of services.</p>
 
             <div class="row reveal" style="padding-top:50px;padding-bottom:50px;">
