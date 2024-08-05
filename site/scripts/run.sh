@@ -8,6 +8,7 @@ ls -la /vol/web
 whoami
 
 python manage.py wait_for_db
+python manage.py base_objects
 python manage.py collectstatic --noinput
 python manage.py migrate
 
