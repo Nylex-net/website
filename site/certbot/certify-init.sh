@@ -15,25 +15,6 @@ set -e
 
 echo "Getting certificate..."
 echo "$DOMAIN with email $ACME_DEFAULT_EMAIL"
-# certbot certonly \
-#     --webroot \
-#     --webroot-path "/vol/www/" \
-#     -d "$DOMAIN" \
-#     --email $EMAIL \
-#     --rsa-key-size 4096 \
-#     --agree-tos \
-#     --noninteractive
-
-# certbot certonly \
-#   --webroot \
-#   --webroot-path "/vol/www/" \
-#   --dns-dnspython \
-#   --dns-dnspython-credentials /deSEC.ini \
-#   -d $DOMAIN \
-#   --email $EMAIL \
-#   --rsa-key-size 4096 \
-#   --agree-tos \
-#   --noninteractive
 
 certbot certonly \
     --authenticator dns-desec \
