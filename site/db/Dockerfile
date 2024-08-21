@@ -1,6 +1,6 @@
 FROM postgres:13-alpine
 
-COPY ./backup_file.dump /tmp/backup_file.dump
+COPY ./dump.dump /tmp/dump.dump
 
 COPY ./run.sh ./scripts/run.sh
 
