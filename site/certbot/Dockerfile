@@ -8,8 +8,8 @@ RUN apk update && apk upgrade && \
     chmod +x /opt/certify-init.sh && \
     chmod +x /opt/renew.sh && \
     chmod 600 /opt/deSEC.ini && \
-    chmod 600 /opt/renewal-deSEC.ini && \
-    chmod +x /opt/acme-dns-auth.py
+    chmod 600 /opt/renewal-deSEC.ini
+    # chmod +x /opt/acme-dns-auth.py
 
 # Comment/Uncomment for renewal of .pem files.
 ENTRYPOINT [ ]
