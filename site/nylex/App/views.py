@@ -10,6 +10,16 @@ class page_view_set(viewsets.ModelViewSet):
     queryset = Page.objects.all()
     serializer_class = WebsiteSerializer
 
+    # Header dropdowns
+    about_dropdown = Page.objects.filter(show_in_header=True, header_dropdown='about').order_by('title')
+    services_dropdown = Page.objects.filter(show_in_header=True, header_dropdown='services').order_by('title')
+    more_dropdown = Page.objects.filter(show_in_header=True, header_dropdown='more').order_by('title')
+
+    # Footer sections
+    company_info = Page.objects.filter(show_in_footer=True, footer_section='company').order_by('title')
+    resources = Page.objects.filter(show_in_footer=True, footer_section='resources').order_by('title')
+    other = Page.objects.filter(show_in_footer=True, footer_section='other').order_by('title')
+
     def home(request):
         content = Page.objects.filter(slug='home')
         if len(content) <= 0:

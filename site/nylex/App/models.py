@@ -3,12 +3,35 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Page(models.Model):
+
+    HEADER_DROPDOWN_CHOICES = [
+        ('none', 'None'),
+        ('about', 'About'),
+        ('services', 'Services'),
+        ('more', 'More')
+        # Add more dropdown options as needed
+    ]
+
+    FOOTER_SECTION_CHOICES = [
+        ('none', 'None'),
+        ('company', 'Nylex.net'),
+        ('resources', 'Resources'),
+        ('other', 'Other')
+        # Add more footer section options as needed
+    ]
+
     title = models.CharField(max_length=200, unique=True)
     description = models.CharField(max_length=500)
     slug = models.SlugField(max_length=200, unique=True)
     header = models.CharField(max_length=200)
     banner = models.ImageField(upload_to='media')
     content = RichTextField()
+
+    show_in_header = models.BooleanField(default=False)
+    header_dropdown = models.CharField(max_length=50, choices=HEADER_DROPDOWN_CHOICES, default='none')
+
+    show_in_footer = models.BooleanField(default=False)
+    footer_section = models.CharField(max_length=50, choices=FOOTER_SECTION_CHOICES, default='none')
     
     def save(self, *args, **kwargs):
         # If the instance already has an image, delete the old image
