@@ -7,14 +7,12 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: nylex
-  name: nylex
+  name: nylex-service
 spec:
   ports:
-    - name: "9000"
-      protocol: TCP
+    - protocol: TCP
       port: 9000
       targetPort: 9000
   selector:
     io.kompose.service: nylex
-status:
-  loadBalancer: {}
+  type: LoadBalancer

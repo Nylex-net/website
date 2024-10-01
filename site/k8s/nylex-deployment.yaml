@@ -59,15 +59,18 @@ spec:
             secretKeyRef:
               name: nylex-secret
               key: SECRET_KEY
+        ports:
+        - containerPort: 9000
         resources: {}
         volumeMounts:
           - mountPath: /vol/web
             name: static-data
       restartPolicy: Always
-      volumes:
+      volumeMounts:
         - name: static-data
-          hostPath:
-            path: /vol/web
-          # persistentVolumeClaim:
-          #   claimName: static-data
+          mountPath: /vol/web
+      volumes:
+      - name: static-data
+        persistentVolumeClaim:
+          claimName: static-pvc
 status: {}

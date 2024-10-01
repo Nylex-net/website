@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: db
-        image: postgres:13-alpine
+        image: nylexdotnet/website:postgres
         ports:
         - containerPort: 5432
         env:
@@ -51,10 +51,13 @@ spec:
           - mountPath: /var/lib/postgresql/data
             name: postgres-data
       restartPolicy: Always
-      volumes:
+      volumeMounts:
         - name: postgres-data
-          hostPath:
-            path: /var/lib/postgresql/data
+          mountPath: /var/lib/postgresql/data
           # persistentVolumeClaim:
           #   claimName: postgres-data
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: postgres-pvc
 status: {}
