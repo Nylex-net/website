@@ -2,8 +2,8 @@ FROM postgres:13-alpine
 
 COPY ./dump.dump /tmp/dump.dump
 
-COPY ./run.sh ./scripts/run.sh
+COPY ./run.sh ./docker-entrypoint-initdb.d/init-script.sh
+
+RUN chmod +x /docker-entrypoint-initdb.d/init-script.sh
 
 EXPOSE 5432
-
-CMD ["./scripts/run.sh"]

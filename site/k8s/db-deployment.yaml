@@ -52,9 +52,15 @@ spec:
             memory: "1Gi"
             cpu: "1"
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: postgres-data
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+        - name: dump-volume
+          mountPath: /tmp/dump.dump
+          subPath: dump.dump
       volumes:
       - name: postgres-data
         persistentVolumeClaim:
           claimName: postgres-pvc
+      - name: dump-volume
+        persistentVolumeClaim:
+          claimName: dump-pvc
