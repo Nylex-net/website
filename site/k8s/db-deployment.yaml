@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
     kompose.version: 1.31.2 (a92241f79)
-  creationTimestamp: null
   labels:
     io.kompose.service: db
   name: db
@@ -20,14 +19,13 @@ spec:
       annotations:
         kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
         kompose.version: 1.31.2 (a92241f79)
-      creationTimestamp: null
       labels:
         io.kompose.network/site-default: "true"
         io.kompose.service: db
     spec:
       containers:
       - name: db
-        image: nylexdotnet/website:postgres
+        image: nylexdotnet/website:postgresql
         ports:
         - containerPort: 5432
         env:
@@ -46,18 +44,17 @@ spec:
             secretKeyRef:
               name: db-secret
               key: DB_PASS
-        resources: {}
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
         volumeMounts:
-          - mountPath: /var/lib/postgresql/data
-            name: postgres-data
-      restartPolicy: Always
-      volumeMounts:
-        - name: postgres-data
-          mountPath: /var/lib/postgresql/data
-          # persistentVolumeClaim:
-          #   claimName: postgres-data
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-data
       volumes:
       - name: postgres-data
         persistentVolumeClaim:
           claimName: postgres-pvc
-status: {}
