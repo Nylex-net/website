@@ -3,11 +3,12 @@ kind: Kustomization
 
 resources:
 - nylex-secret.yaml
-# - certbot-certs-persistentvolumeclaim.yaml
+- certbot-certs-persistentvolumeclaim.yaml
+- certbot-web-persistentvolumeclaim.yaml
 - certbot-deployment.yaml
 - db-persistentvolumeclaim.yaml
 - nylex-persistentvolumeclaim.yaml
-# - certbot-web-persistentvolumeclaim.yaml
+- proxy-dhparams-persistentvolumeclaim.yaml
 - db-configmap.yaml
 - db-secret.yaml
 - db-deployment.yaml
@@ -15,9 +16,7 @@ resources:
 - nylex-configmap.yaml
 - nylex-deployment.yaml
 - nylex-service.yaml
-# - postgres-data-persistentvolumeclaim.yaml
 - proxy-deployment.yaml
-# - proxy-dhparams-persistentvolumeclaim.yaml
-- proxy-service.yaml
+# - proxy-service.yaml
 # - proxy-tcp-service.yaml
 # - static-data-persistentvolumeclaim.yaml

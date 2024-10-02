@@ -48,13 +48,13 @@ spec:
       restartPolicy: Always
       volumes:
         - name: certbot-web
-          hostPath:
-            path: /vol/www
+          persistentVolumeClaim:
+          claimName: certbot-web-pvc
           # persistentVolumeClaim:
           #   claimName: certbot-web
         - name: certbot-certs
-          hostPath:
-            path: /etc/letsencrypt
+          persistentVolumeClaim:
+          claimName: certbot-certs-pvc
           # persistentVolumeClaim:
           #   claimName: certbot-certs
 status: {}

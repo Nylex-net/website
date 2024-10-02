@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: certbot-web
-  name: certbot-web
+  name: certbot-web-pvc
 spec:
   accessModes:
     - ReadWriteOnce
