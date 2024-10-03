@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
-    kompose.version: 1.31.2 (a92241f79)
   labels:
     io.kompose.service: db
   name: db
@@ -16,9 +13,6 @@ spec:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f ../docker-compose-deploy.yml
-        kompose.version: 1.31.2 (a92241f79)
       labels:
         io.kompose.network/site-default: "true"
         io.kompose.service: db
