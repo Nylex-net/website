@@ -70,7 +70,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'App',
     'ckeditor',
-    'corsheaders'
+    'corsheaders',
+    'webauthn'
 ]
 
 MIDDLEWARE = [
@@ -219,3 +220,8 @@ CKEDITOR_CONFIGS = {
         'extraAllowedContent': 'data-*'
     },
 }
+
+WEBAUTHN_RELYING_PARTY_NAME = "App"
+WEBAUTHN_RELYING_PARTY_ID = "nylex.net"  # Replace with your domain
+WEBAUTHN_ORIGIN = "https://ws-henry.nylex.net"    # Replace with your domain and protocol
+# WEBAUTH_VERIFY_URL = '/verify-webauthn/'

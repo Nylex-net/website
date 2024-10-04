@@ -1,0 +1,8 @@
+<form method="post" action="{% url 'login_security_key' %}">
+    {% csrf_token %}
+    <button type="submit">Login with Security Key</button>
+</form>
+<form method="post" action="{% url 'register_security_key' %}">
+    {% csrf_token %}
+    <button type="submit">Register Security Key</button>
+</form>

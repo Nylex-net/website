@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from webauthn.models import WebAuthnUser
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Page(models.Model):
@@ -49,3 +51,6 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
+    
+class AdminSecurityKey(WebAuthnUser):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)

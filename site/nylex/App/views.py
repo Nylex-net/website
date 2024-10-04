@@ -5,6 +5,8 @@ from .models import Page
 import re
 from rest_framework import viewsets
 from .serializers import WebsiteSerializer
+from django.shortcuts import render
+from webauthn.helpers import register_webauthn_credential
 
 class page_view_set(viewsets.ModelViewSet):
     queryset = Page.objects.all()
@@ -90,3 +92,19 @@ def custom500(request):
     }
     # print(exception)
     return HttpResponseServerError(loader.get_template('404.html').render(context, request))
+
+def register_security_key(request):
+    if request.method == "POST":
+        response = register_webauthn_credential(request, user=request.user)
+        if response.success:
+            # Successfully registered the key, redirect to admin
+            return redirect('admin:index')
+    return render(request, 'admin/register_security_key.html')
+
+def authenticate_with_security_key(request):
+    if request.method == "POST":
+        response = authenticate_webauthn_credential(request, user=request.user)
+        if response.success:
+            # Successful authentication, proceed to admin
+            return redirect('admin:index')
+    return render(request, 'admin/login_with_security_key.html')
