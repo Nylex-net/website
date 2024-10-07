@@ -41,6 +41,7 @@ RUN apk update && apk upgrade && \
     adduser --disabled-password --no-create-home django && \
     mkdir -p /vol/web/static && \
     mkdir -p /vol/web/media && \
+    mkdir -p /vol/web/logs && \
     chown -R django:django /nylex && \
     chown -R django:django /vol && \
     chmod -R 755 /vol && \

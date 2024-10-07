@@ -6,7 +6,11 @@ import re
 from rest_framework import viewsets
 from .serializers import WebsiteSerializer
 from django.shortcuts import render
-from webauthn.helpers import register_webauthn_credential
+from django.contrib.admin import site
+from django.contrib.auth.views import LoginView
+# from webauthn.helpers import register_webauthn_credential
+# from webauthn.models import WebAuthnUser
+from django_webauthn.helpers import generate_challenge, create_credential_options, verify_credential, generate_authentication_options, verify_assertion
 
 class page_view_set(viewsets.ModelViewSet):
     queryset = Page.objects.all()
@@ -93,18 +97,70 @@ def custom500(request):
     # print(exception)
     return HttpResponseServerError(loader.get_template('404.html').render(context, request))
 
-def register_security_key(request):
-    if request.method == "POST":
-        response = register_webauthn_credential(request, user=request.user)
-        if response.success:
-            # Successfully registered the key, redirect to admin
-            return redirect('admin:index')
-    return render(request, 'admin/register_security_key.html')
+# 2FA Stuff that don't work yet...
 
-def authenticate_with_security_key(request):
-    if request.method == "POST":
-        response = authenticate_webauthn_credential(request, user=request.user)
-        if response.success:
-            # Successful authentication, proceed to admin
-            return redirect('admin:index')
-    return render(request, 'admin/login_with_security_key.html')
+class AdminLoginWebAuthnView(LoginView):
+    template_name = 'admin/login.html'
+
+def register_webauthn(request):
+    if request.method == 'POST':
+        credential_options = create_credential_options(
+            rp_name='My Django App',
+            rp_id='myapp.com',
+            user_id=str(request.user.id),
+            user_name=request.user.username,
+            user_display_name=request.user.get_full_name(),
+        )
+        request.session['webauthn_challenge'] = credential_options['challenge']
+        return render(request, 'register_webauthn.html', {'credential_options': credential_options})
+
+def verify_registration(request):
+    if request.method == 'POST':
+        # Verify the challenge and create the WebAuthnCredential
+        credential = verify_credential(
+            request.POST['credential'],
+            challenge=request.session.pop('webauthn_challenge'),
+            rp_id='myapp.com',
+        )
+        if credential:
+            UserWebAuthnCredential.objects.create(
+                user=request.user,
+                credential_id=credential.credential_id,
+                public_key=credential.public_key,
+                sign_count=credential.sign_count,
+            )
+            return redirect('success_url')
+    return redirect('failure_url')
+
+def login_webauthn(request):
+    if request.method == 'POST':
+        # Create the authentication options to pass to the browser
+        auth_options = generate_authentication_options(
+            rp_id='myapp.com',
+            allowed_credentials=[{
+                'id': cred.credential_id,
+                'transports': ['usb', 'nfc', 'ble', 'internal'],
+            } for cred in request.user.webauthn_credentials.all()],
+        )
+        request.session['webauthn_challenge'] = auth_options['challenge']
+        return render(request, 'login_webauthn.html', {'auth_options': auth_options})
+
+def verify_login(request):
+    if request.method == 'POST':
+        # Verify the WebAuthn credential assertion
+        credential = verify_assertion(
+            request.POST['assertion'],
+            challenge=request.session.pop('webauthn_challenge'),
+            rp_id='myapp.com',
+        )
+        if credential:
+            # Log in the user (depends on your auth system)
+            # You can use Django's built-in login function
+            login(request, request.user)
+            return redirect('success_url')
+    return redirect('failure_url')
+
+from django.urls import path
+urlpatterns = [
+    path('admin/login_webauthn/', AdminLoginWebAuthnView.as_view(), name='admin_login_webauthn'),
+]

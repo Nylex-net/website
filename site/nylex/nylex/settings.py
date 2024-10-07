@@ -39,24 +39,45 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
 # LOG_DIR = os.path.join(BASE_DIR, 'logs')
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'file': {
-#             'level': 'ERROR',
-#             'class': 'logging.FileHandler',
-#             'filename': os.path.join(LOG_DIR, 'django_error.log'),
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file'],
-#             'level': 'ERROR',
-#             'propagate': True,
-#         },
-#     },
-# }
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',  # Log only errors and above
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/django_errors.log'),
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
 
 # Application definition
 
@@ -221,7 +242,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-WEBAUTHN_RELYING_PARTY_NAME = "App"
-WEBAUTHN_RELYING_PARTY_ID = "nylex.net"  # Replace with your domain
-WEBAUTHN_ORIGIN = "https://ws-henry.nylex.net"    # Replace with your domain and protocol
-# WEBAUTH_VERIFY_URL = '/verify-webauthn/'
+WEBAUTHN_RP_NAME = "App"
+WEBAUTHN_RP_ID = "nylex.net"  # Replace with your domain
+WEBAUTHN_RP_ORIGIN = "https://ws-henry.nylex.net"    # Replace with your domain and protocol
+# WEBAUTHN_RP_ICON = 'https://myapp.com/static/img/logo.png'  # Optional, but useful for UX
