@@ -7,7 +7,6 @@ resources:
 - certbot-web-persistentvolumeclaim.yaml
 - certbot-deployment.yaml
 - db-persistentvolumeclaim.yaml
-- db-dumppersistentvolumeclaim.yaml
 - nylex-persistentvolumeclaim.yaml
 - proxy-dhparams-persistentvolumeclaim.yaml
 - db-configmap.yaml
