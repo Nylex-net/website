@@ -91,8 +91,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'App',
     'ckeditor',
-    'corsheaders',
-    'webauthn'
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -241,8 +240,3 @@ CKEDITOR_CONFIGS = {
         'extraAllowedContent': 'data-*'
     },
 }
-
-WEBAUTHN_RP_NAME = "App"
-WEBAUTHN_RP_ID = "nylex.net"  # Replace with your domain
-WEBAUTHN_RP_ORIGIN = "https://ws-henry.nylex.net"    # Replace with your domain and protocol
-# WEBAUTHN_RP_ICON = 'https://myapp.com/static/img/logo.png'  # Optional, but useful for UX

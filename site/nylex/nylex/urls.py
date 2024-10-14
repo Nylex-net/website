@@ -23,10 +23,10 @@ from django.forms import SecurityKeyAuthenticationForm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('App.urls')),
-    path('admin/login/', auth_views.LoginView.as_view(
-        authentication_form=SecurityKeyAuthenticationForm
-    ))
+    path('', include('App.urls'))
+    # path('admin/login/', auth_views.LoginView.as_view(
+    #     authentication_form=SecurityKeyAuthenticationForm
+    # ))
 ]
 
 if settings.DEBUG:

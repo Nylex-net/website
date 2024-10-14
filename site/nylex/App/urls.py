@@ -1,5 +1,5 @@
 from django.urls import path, include
-from App.views import page_view_set
+from App.views import page_view_set, AdminLoginWebAuthnView
 from rest_framework import routers
 import django.conf.urls
 from App.views import custom404, custom500, register_security_key, authenticate_with_security_key
@@ -17,11 +17,7 @@ urlpatterns = [
     path('site-map/', page_view_set.site_map, name='site-map'),
     path('<slug:slug>/', page_view_set.template, name='<slug:slug>'),
     path('api-auth/', include('rest_framework.urls')),
-    
-    path('webauthn/register/', register_webauthn, name='register_webauthn'),
-    path('webauthn/verify_registration/', verify_registration, name='verify_registration'),
-    path('webauthn/login/', login_webauthn, name='login_webauthn'),
-    path('webauthn/verify_login/', verify_login, name='verify_login'),
+    path('admin/login/', AdminLoginWebAuthnView.as_view(), name='admin_login')
 ]
 
 django.conf.urls.handler404 = custom404
