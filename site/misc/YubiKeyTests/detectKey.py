@@ -5,7 +5,7 @@ from time import sleep
 handled_serials = set()  # Keep track of YubiKeys we've already handled.
 state = None
 try:
-    while True:  # Run this until we stop the script with Ctrl+C
+    while True:  # Run this until we stop the script with Ctrl + C
         pids, new_state = scan_devices()
         if new_state != state:
             state = new_state  # State has changed
