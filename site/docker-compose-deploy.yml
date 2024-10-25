@@ -16,6 +16,9 @@ services:
       - DB_PASS=${DB_PASS}
       - SECRET_KEY=${SECRET_KEY}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - MS_CLIENT_ID=${MS_CLIENT_ID}
+      - MS_TENANT_ID=${MS_TENANT_ID}
+      - MS_SECRET_VAL=${MS_SECRET_VAL}
     depends_on:
       - db
 

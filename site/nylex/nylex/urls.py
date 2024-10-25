@@ -19,11 +19,16 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.forms import SecurityKeyAuthenticationForm
+from django.shortcuts import redirect
+
+def admin_login_redirect(request):
+    return redirect('/oidc/authenticate/')
 
 urlpatterns = [
+    path('admin/login/', admin_login_redirect, name='admin_login'),  # Override admin login
     path('admin/', admin.site.urls),
-    path('', include('App.urls'))
+    path('', include('App.urls')),
+    path('oidc/', include('mozilla_django_oidc.urls'))
     # path('admin/login/', auth_views.LoginView.as_view(
     #     authentication_form=SecurityKeyAuthenticationForm
     # ))

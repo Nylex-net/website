@@ -94,22 +94,3 @@ def custom500(request):
     }
     # print(exception)
     return HttpResponseServerError(loader.get_template('404.html').render(context, request))
-
-# 2FA Stuff that don't work yet...
-
-# class AdminLoginWebAuthnView(LoginView):
-#     def form_valid(self, request):
-#         if request.method == 'POST':
-#             # Retrieve WebAuthn challenge from session
-#             webauthn_response = request.POST.get('webauthn_response')
-#             # Validate the WebAuthn assertion response
-#             # After receiving response from security key
-#             auth_credential = AuthenticationCredential(...)
-#             verified = verify_authentication_response(credential=auth_credential, expected_challenge=request.session['challenge'])
-#             if verified:
-#                 login(request, user)
-#             else:
-#                 return HttpResponse("WebAuthn failed")
-    
-#     auth_options = generate_authentication_options(allowed_credentials=[{"id": stored_credential_id}], challenge="server-challenge")
-#     request.session['challenge'] = auth_options.challenge

@@ -91,7 +91,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'App',
     'ckeditor',
-    'corsheaders'
+    'corsheaders',
+    'mozilla_django_oidc'
 ]
 
 MIDDLEWARE = [
@@ -240,3 +241,20 @@ CKEDITOR_CONFIGS = {
         'extraAllowedContent': 'data-*'
     },
 }
+
+AUTHENTICATION_BACKENDS = [
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',  # OIDC backend
+    'django.contrib.auth.backends.ModelBackend',  # Fallback Django backend
+]
+
+OIDC_RP_CLIENT_ID = env('MS_CLIENT_ID')
+OIDC_RP_CLIENT_SECRET = env('MS_SECRET_VAL')
+TENANT = env('MS_TENANT_ID')
+OIDC_OP_AUTHORIZATION_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/oauth2/v2.0/authorize'
+OIDC_OP_TOKEN_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/oauth2/v2.0/token'
+OIDC_OP_USER_ENDPOINT = 'https://graph.microsoft.com/oidc/userinfo'
+OIDC_OP_JWKS_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/discovery/v2.0/keys'
+OIDC_RP_SIGN_ALGO = 'RS256'
+
+LOGIN_REDIRECT_URL = '/admin/'  # Redirect to admin after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
