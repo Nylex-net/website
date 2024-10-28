@@ -247,6 +247,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Fallback Django backend
 ]
 
+# Configurations for Microsoft Entra ID admin login.
+
 OIDC_RP_CLIENT_ID = env('MS_CLIENT_ID')
 OIDC_RP_CLIENT_SECRET = env('MS_SECRET_VAL')
 TENANT = env('MS_TENANT_ID')
