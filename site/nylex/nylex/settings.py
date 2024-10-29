@@ -266,4 +266,4 @@ OIDC_RP_SIGN_ALGO = 'RS256'
 
 LOGIN_REDIRECT_URL = reverse_lazy("admin:index")  # Redirect to admin after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
-# OIDC_CREATE_USER = False
+OIDC_CREATE_USER = False
