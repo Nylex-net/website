@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 import environ
+from django.urls import reverse_lazy
 # from decouple import Config, Csv
 
 # Environmental variables.
@@ -263,6 +264,6 @@ OIDC_OP_USER_ENDPOINT = 'https://graph.microsoft.com/oidc/userinfo'
 OIDC_OP_JWKS_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/discovery/v2.0/keys'
 OIDC_RP_SIGN_ALGO = 'RS256'
 
-LOGIN_REDIRECT_URL = '/admin/'  # Redirect to admin after login
+LOGIN_REDIRECT_URL = reverse_lazy("admin:index")  # Redirect to admin after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
-OIDC_CREATE_USER = False
+# OIDC_CREATE_USER = False
