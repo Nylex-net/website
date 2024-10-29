@@ -76,6 +76,10 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': False,
         },
+        'mozilla_django_oidc': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        }
     },
 }
 
@@ -104,7 +108,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'mozilla_django_oidc.middleware.SessionRefresh'
 ]
 
 ROOT_URLCONF = 'nylex.urls'
@@ -260,3 +265,4 @@ OIDC_RP_SIGN_ALGO = 'RS256'
 
 LOGIN_REDIRECT_URL = '/admin/'  # Redirect to admin after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+OIDC_CREATE_USER = False
