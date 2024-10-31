@@ -267,3 +267,5 @@ OIDC_RP_SIGN_ALGO = 'RS256'
 LOGIN_REDIRECT_URL = '/admin/'  # Redirect to admin after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 # OIDC_CREATE_USER = False
+
+# Redirect URIs testing with in Entra ID: /oidc/authenticate/   /oidc/callback/     /admin/
