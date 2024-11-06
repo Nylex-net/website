@@ -31,7 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('App.urls')),
     # path('oidc/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),
-    path('oidc/callback/', OIDCAuthenticationCallbackView.as_view(), name='oidc_authentication_callback')
+    # path('oidc/callback/', OIDCAuthenticationCallbackView.as_view(), name='oidc_authentication_callback')
 ]
 
 if settings.DEBUG:
