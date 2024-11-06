@@ -26,7 +26,8 @@ def admin_login_redirect(request):
     return redirect('/oidc/authenticate/')
 
 urlpatterns = [
-    path('admin/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),  # Override admin login 
+    # path('admin/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),  # Override admin login 
+    path('admin/login/', admin_login_redirect),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('admin/', admin.site.urls),
     path('', include('App.urls')),

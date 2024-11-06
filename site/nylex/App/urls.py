@@ -17,9 +17,9 @@ urlpatterns = [
     path('site-map/', page_view_set.site_map, name='site-map'),
     path('<slug:slug>/', page_view_set.template, name='<slug:slug>'),
     path('api-auth/', include('rest_framework.urls')),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout')
-    # path('admin/login/', AdminLoginWebAuthnView.as_view(), name='admin_login')
+    # path('oidc/', include('mozilla_django_oidc.urls')),
+    # path('login/', auth_views.LoginView.as_view(), name='login'),
+    # path('logout/', auth_views.LogoutView.as_view(), name='logout')
 ]
 
 django.conf.urls.handler404 = custom404
