@@ -20,18 +20,18 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import redirect
+from mozilla_django_oidc.views import OIDCAuthenticationRequestView, OIDCAuthenticationCallbackView
 
 def admin_login_redirect(request):
     return redirect('/oidc/authenticate/')
 
 urlpatterns = [
-    path('admin/login/', admin_login_redirect, name='admin_login'),  # Override admin login
+    path('admin/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),  # Override admin login 
+    path('oidc/', include('mozilla_django_oidc.urls')),
     path('admin/', admin.site.urls),
     path('', include('App.urls')),
-    path('oidc/', include('mozilla_django_oidc.urls'))
-    # path('admin/login/', auth_views.LoginView.as_view(
-    #     authentication_form=SecurityKeyAuthenticationForm
-    # ))
+    # path('oidc/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),
+    path('oidc/callback/', OIDCAuthenticationCallbackView.as_view(), name='oidc_authentication_callback')
 ]
 
 if settings.DEBUG:

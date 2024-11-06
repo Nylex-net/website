@@ -263,9 +263,11 @@ OIDC_OP_TOKEN_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/oauth2/v2.
 OIDC_OP_USER_ENDPOINT = 'https://graph.microsoft.com/oidc/userinfo'
 OIDC_OP_JWKS_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/discovery/v2.0/keys'
 OIDC_RP_SIGN_ALGO = 'RS256'
+OIDC_RP_REDIRECT_URI = f'https://{env('DOMAIN')}/oidc/callback/'
 
-LOGIN_REDIRECT_URL = '/admin/'  # Redirect to admin after login
-LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+# LOGIN_URL = '/oidc/authenticate/'
+# LOGIN_REDIRECT_URL = '/admin/'  # Redirect to admin after login
+# LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 # OIDC_CREATE_USER = False
 
 # Redirect URIs testing with in Entra ID: /oidc/authenticate/   /oidc/callback/     /admin/

@@ -19,6 +19,7 @@ services:
       - MS_CLIENT_ID=${MS_CLIENT_ID}
       - MS_TENANT_ID=${MS_TENANT_ID}
       - MS_SECRET_VAL=${MS_SECRET_VAL}
+      - DOMAIN=${DOMAIN}
     depends_on:
       - db
 
