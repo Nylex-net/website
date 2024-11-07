@@ -27,12 +27,12 @@ def admin_login_redirect(request):
 
 urlpatterns = [
     # path('admin/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),  # Override admin login 
+    path('oidc/callback/', OIDCAuthenticationCallbackView.as_view, name='oidc_callback'),
     path('admin/login/', admin_login_redirect),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('admin/', admin.site.urls),
     path('', include('App.urls')),
     # path('oidc/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),
-    # path('oidc/callback/', OIDCAuthenticationCallbackView.as_view(), name='oidc_authentication_callback')
 ]
 
 if settings.DEBUG:

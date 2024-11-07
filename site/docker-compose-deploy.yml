@@ -20,6 +20,7 @@ services:
       - MS_TENANT_ID=${MS_TENANT_ID}
       - MS_SECRET_VAL=${MS_SECRET_VAL}
       - DOMAIN=${DOMAIN}
+      - OIDC_AUTHENTICATION_CALLBACK_URL=${OIDC_AUTHENTICATION_CALLBACK_URL}
     depends_on:
       - db
 

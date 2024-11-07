@@ -14,7 +14,7 @@ server {
 
 server {
     listen 443 ssl;
-    server_name ${DOMAIN} ws-henry.${DOMAIN};
+    server_name ${DOMAIN};
 
     ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
@@ -33,5 +33,8 @@ server {
         uwsgi_pass           ${APP_HOST}:${APP_PORT};
         include              /etc/nginx/uwsgi_params;
         client_max_body_size 50M;
+
+        # Optional: proxy_redirect for upstream response headers adjustment
+        proxy_redirect http:// https://;
     }
 }
