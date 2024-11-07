@@ -20,15 +20,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import redirect
-from mozilla_django_oidc.views import OIDCAuthenticationRequestView, OIDCAuthenticationCallbackView
+from mozilla_django_oidc.views import OIDCAuthenticationRequestView, OIDCAuthenticationCallbackView, OIDCLogoutView
 
 def admin_login_redirect(request):
     return redirect('/oidc/authenticate/')
 
 urlpatterns = [
     # path('admin/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),  # Override admin login 
-    path('oidc/callback/', OIDCAuthenticationCallbackView.as_view, name='oidc_callback'),
-    path('admin/login/', admin_login_redirect),
+    path('oidc/callback/', OIDCAuthenticationCallbackView.as_view(), name='oidc_callback'),
+    path('admin/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),
+    path('admin/logout/', OIDCLogoutView.as_view()),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('admin/', admin.site.urls),
     path('', include('App.urls')),

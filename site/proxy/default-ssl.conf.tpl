@@ -1,7 +1,7 @@
 server {
     listen ${LISTEN_PORT};
 
-    server_name ${DOMAIN} ws-henry.${DOMAIN};
+    server_name ${DOMAIN};
 
     location /.well-known/acme-challenge/ {
         root /vol/www/;

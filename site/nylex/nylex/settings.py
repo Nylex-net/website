@@ -264,8 +264,8 @@ OIDC_OP_USER_ENDPOINT = 'https://graph.microsoft.com/oidc/userinfo'
 OIDC_OP_JWKS_ENDPOINT = f'https://login.microsoftonline.com/{TENANT}/discovery/v2.0/keys'
 OIDC_RP_SIGN_ALGO = 'RS256'
 # OIDC_RP_REDIRECT_URI = f'https://{env('DOMAIN')}/oidc/callback/'
+# OIDC_AUTHENTICATION_CALLBACK_URL = f'https://{env('DOMAIN')}/oidc/callback/'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# OIDC_AUTHENTICATION_CALLBACK_URL = f'{env('DOMAIN')}/oidc/callback/'
 OIDC_RP_SCOPES = "openid email profile"
 
 # LOGIN_URL = '/oidc/authenticate/'

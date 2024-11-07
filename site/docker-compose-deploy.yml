@@ -23,6 +23,8 @@ services:
       - OIDC_AUTHENTICATION_CALLBACK_URL=${OIDC_AUTHENTICATION_CALLBACK_URL}
     depends_on:
       - db
+    networks:
+      - webnet
 
   db:
     # image: postgres:13-alpine
@@ -35,6 +37,8 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
+    networks:
+      - webnet
 
   proxy:
     # image: nginx-proxy
@@ -56,6 +60,8 @@ services:
       - DOMAIN=${DOMAIN}
     labels:
       kompose.service.expose: "ws-henry.example.com"
+    networks:
+      - webnet
 
 # Comment out certbot configurations until it works.
   certbot:
@@ -72,6 +78,8 @@ services:
       - certbot-certs:/etc/letsencrypt/
     depends_on:
       - proxy
+    networks:
+      - webnet
 
 volumes:
   postgres-data:
@@ -80,3 +88,6 @@ volumes:
   certbot-web:
   proxy-dhparams:
   certbot-certs:
+
+networks:
+  webnet:
