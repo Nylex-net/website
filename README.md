@@ -16,7 +16,7 @@ For the new Nylex website, I chose to use Django. If you're unfamiliar with Djan
 - nginx
 - alpine
 - Docker
-- MS Entra ID (For secure Microsoft Login)
+- MS Entra ID (For secure Microsoft Login into admin portal).
 
 I wanted to design this new application with the intention that it's secure, easy to manage and customize, and it runs fairly quickly. To accomplish this, I decided these were the best tools to use.
 
