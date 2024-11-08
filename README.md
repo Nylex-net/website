@@ -1,4 +1,4 @@
-# website
+# Website
 New redesign of the company website.  Code related to docking this application was adapted from londonappdeveloper at https://londonappdeveloper.com/deploying-django-with-docker-compose/.
 
 The original website used Joomla.  Joomla is a CMS that's meant to help manage the site using a PHP server and mysql. However, it used a very old version of Joomla that went out of support. Plus the website was beginning to look outdated, and I worried that its performance would dissolve over time.
